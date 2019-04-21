@@ -62,7 +62,9 @@ internal data class StackTrace(val className: String?, val methodName: String?, 
 
         if (message != null) {
             sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(message, innerIndent)))
+            sb.append(indentText(message,
+                    "${indent.indent}${logger.level.color.boldAndColorText("|")}${" ".repeat(innerIndent - 1)}",
+                    AnsiColor.Companion::boldText))
         }
 
         sb.append('\n')

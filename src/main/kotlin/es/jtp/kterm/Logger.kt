@@ -302,3 +302,26 @@ internal fun indentText(text: String, indent: Int): String {
     val indentText = "\n${" ".repeat(indent)}"
     return text.replace("\n", indentText)
 }
+
+/**
+ * Makes a text to be correctly indented with a prefix.
+ */
+internal fun indentText(text: String, prefix: String): String {
+    if (prefix == "") {
+        return text
+    }
+
+    return text.replace("\n", "\n$prefix")
+}
+
+/**
+ * Makes a text to be correctly indented with a prefix and a build function.
+ */
+internal fun indentText(text: String, prefix: String, build: (String) -> String): String {
+    if (prefix == "") {
+        return build(text)
+    }
+
+    val result = text.split("\n").map(build)
+    return result.joinToString("\n$prefix")
+}

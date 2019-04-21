@@ -9,7 +9,7 @@ import es.jtp.kterm.utils.*
 internal data class StackLevel(val causedAt: Int, val causeMessage: String, val stackTrace: List<StackTrace>,
                                val causes: List<StackLevel>) {
     /**
-     * Gets the stack level as a string formatted to be writen into an ANSI interpreter.
+     * Gets the stack level as a string formatted to be written into an ANSI interpreter.
      *
      * @return The number on entries inside it.
      */
@@ -29,7 +29,7 @@ internal data class StackLevel(val causedAt: Int, val causeMessage: String, val 
             sb.append(indent.timesIndent)
             sb.append(logger.level.color.boldAndColorText(text))
             sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(causeMessage, indent.getLength() + text.length)))
+            sb.append(AnsiColor.boldText(indentText(causeMessage, indent.getLength() + text.length + 1)))
             sb.append('\n')
         }
 

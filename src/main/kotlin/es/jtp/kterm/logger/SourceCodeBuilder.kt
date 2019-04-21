@@ -54,7 +54,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
         sb.append(logger.level.color.boldAndColorText("┌─"))
         if (title != null) {
             sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(title))
+            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
         }
         sb.append('\n')
 
@@ -84,7 +84,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
             else -> {
                 sb.append(logger.level.color.boldAndColorText(text))
                 sb.append(' ')
-                sb.append(AnsiColor.boldText(message))
+                sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + fromIndex.second + 4 + length)))
             }
         }
 
@@ -102,7 +102,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
         sb.append(logger.level.color.boldAndColorText("┌─"))
         if (title != null) {
             sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(title))
+            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
         }
         sb.append('\n')
 
@@ -155,7 +155,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
             sb.append(indent.indent)
             sb.append(logger.level.color.boldAndColorText("└─>"))
             sb.append(' ')
-            sb.append(AnsiColor.boldText(message))
+            sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + 2)))
             sb.append('\n')
         }
     }
@@ -171,7 +171,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
         sb.append(logger.level.color.boldAndColorText("┌─"))
         if (title != null) {
             sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(title))
+            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
         }
         sb.append('\n')
 
@@ -246,7 +246,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
             sb.append(indent.indent)
             sb.append(logger.level.color.boldAndColorText("└─>"))
             sb.append(' ')
-            sb.append(AnsiColor.boldText(message))
+            sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + 2)))
             sb.append('\n')
         }
     }
@@ -356,7 +356,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             throw KTermException("The source code requires at least a position to highlight")
         }
 
-        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message?.stringify())
+        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message)
     }
 
     private fun checkRowColumn(row: Int, column: Int) {
