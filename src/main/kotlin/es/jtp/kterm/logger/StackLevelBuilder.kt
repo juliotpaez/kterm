@@ -2,26 +2,19 @@ package es.jtp.kterm.logger
 
 import es.jtp.kterm.*
 import es.jtp.kterm.utils.*
-import es.jtp.kterm.utils.Indent
 
 /**
  * A stack level for logs.
  */
-internal data class StackLevel(
-        val causedAt: Int, val causeMessage: String, val stackTrace: List<StackTrace>, val causes: List<StackLevel>
-) {
+internal data class StackLevel(val causedAt: Int, val causeMessage: String, val stackTrace: List<StackTrace>,
+                               val causes: List<StackLevel>) {
     /**
      * Gets the stack level as a string formatted to be writen into an ANSI interpreter.
      *
      * @return The number on entries inside it.
      */
-    internal fun toUnixString(
-            sb: StringBuilder,
-            logger: Logger,
-            initPosition: Int,
-            maxPositionDigits: Int,
-            indent: Indent
-    ): Int {
+    internal fun toUnixString(sb: StringBuilder, logger: Logger, initPosition: Int, maxPositionDigits: Int,
+                              indent: Indent): Int {
         // Ignore the first cause if it is the same as the message.
         if (indent.times > 0 || logger.message != causeMessage) {
             // Empty first line only if there is no the first one.
@@ -44,12 +37,9 @@ internal data class StackLevel(
         var currentPosition = initPosition
         for (i in stackTrace.lastIndex downTo 0) {
             while (causeIndex >= 0 && causes[causeIndex].causedAt == i) {
-                currentPosition = causes[causeIndex].toUnixString(
-                        sb, logger, currentPosition, maxPositionDigits, Indent(
-                        indent.indent, indent.times + 1,
-                        indent.timesIndent + "${logger.level.color.boldAndColorText("|")} "
-                )
-                )
+                currentPosition = causes[causeIndex].toUnixString(sb, logger, currentPosition, maxPositionDigits,
+                        Indent(indent.indent, indent.times + 1,
+                                indent.timesIndent + "${logger.level.color.boldAndColorText("|")} "))
 
                 // Empty last line.
                 sb.append(indent.indent)
@@ -116,8 +106,6 @@ class StackLevelBuilder(private val causedAt: Int, private val message: String) 
             throw KTermException("Cannot set a cause at the end of the stack trace.")
         }
 
-        return StackLevel(
-                causedAt, message, stackTrace, causes
-        )
+        return StackLevel(causedAt, message, stackTrace, causes)
     }
 }

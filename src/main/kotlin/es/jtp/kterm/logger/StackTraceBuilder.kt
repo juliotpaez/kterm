@@ -6,18 +6,13 @@ import es.jtp.kterm.utils.*
 /**
  * A stack message for logs.
  */
-internal data class StackTrace(
-        val className: String?,
-        val methodName: String?,
-        val message: String?,
-        val filePath: String?,
-        val line: Int?,
-        val column: Int?
-) {
+internal data class StackTrace(val className: String?, val methodName: String?, val message: String?,
+                               val filePath: String?, val line: Int?, val column: Int?) {
     /**
      * Gets the stack trace as a string formatted to be writen into an ANSI interpreter.
      */
-    internal fun toUnixString(sb: StringBuilder, logger: Logger, position: Int, maxPositionDigits: Int, indent: Indent) {
+    internal fun toUnixString(sb: StringBuilder, logger: Logger, position: Int, maxPositionDigits: Int,
+                              indent: Indent) {
         var innerIndent = indent.getLength()
 
         sb.append(indent.indent)
@@ -67,13 +62,7 @@ internal data class StackTrace(
 
         if (message != null) {
             sb.append(' ')
-            sb.append(
-                    AnsiColor.boldText(
-                            indentText(
-                                    message, innerIndent
-                            )
-                    )
-            )
+            sb.append(AnsiColor.boldText(indentText(message, innerIndent)))
         }
 
         sb.append('\n')
@@ -155,7 +144,6 @@ class StackTraceBuilder {
     /**
      * Creates a new [StackTrace] from this builder.
      */
-    internal fun toStackTrace() = StackTrace(
-            className?.stringify(), methodName?.stringify(), message, filePath?.stringify(), line, column
-    )
+    internal fun toStackTrace() = StackTrace(className?.stringify(), methodName?.stringify(), message,
+            filePath?.stringify(), line, column)
 }

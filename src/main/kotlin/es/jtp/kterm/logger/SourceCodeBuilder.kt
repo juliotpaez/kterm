@@ -6,7 +6,8 @@ import es.jtp.kterm.utils.*
 /**
  * A source code for logs.
  */
-internal data class SourceCode(val content: String, val filename: String?, val title: String?, val fromIndex: Pair<Int, Int>, val toIndex: Pair<Int, Int>, val message: String?) {
+internal data class SourceCode(val content: String, val filename: String?, val title: String?,
+                               val fromIndex: Pair<Int, Int>, val toIndex: Pair<Int, Int>, val message: String?) {
     /**
      * Gets the source code as a string formatted to be writen into an ANSI interpreter.
      */
@@ -330,7 +331,8 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             throw KTermException("The 'rowTo' parameter must be greater or equal than the 'rowFrom' parameter.")
         }
         if (rowFrom == rowTo && columnTo < columnFrom) {
-            throw KTermException("The 'columnTo' parameter must be greater or equal than the 'columnFrom' parameter if both rows are the same.")
+            throw KTermException(
+                    "The 'columnTo' parameter must be greater or equal than the 'columnFrom' parameter if both rows are the same.")
         }
 
         checkRowColumn(rowFrom, columnFrom)

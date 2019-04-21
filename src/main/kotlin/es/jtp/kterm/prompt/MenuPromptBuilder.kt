@@ -6,7 +6,8 @@ import kotlin.math.*
 /**
  * Prompt builder for selections.
  */
-class MenuPromptBuilder internal constructor(private val message: String, private val color: AnsiColor = AnsiColor.Blue) {
+class MenuPromptBuilder internal constructor(private val message: String,
+                                             private val color: AnsiColor = AnsiColor.Blue) {
     private var maxTagSize = 0
     private val optionsMap = mutableMapOf<String, Pair<String, (() -> Unit)?>>()
     private val optionsKeys = mutableListOf<String>()

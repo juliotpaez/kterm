@@ -1,7 +1,6 @@
 package es.jtp.kterm
 
 import es.jtp.kterm.logger.*
-import es.jtp.kterm.logger.SourceCode
 import es.jtp.kterm.utils.*
 import java.time.*
 import java.time.format.*
@@ -269,10 +268,27 @@ internal data class LogNote(val tag: String, val message: String?)
 
 /**
  * The different log levels for [Logger].
+ *
+ * @param tag The tag used to identify the level in the console.
+ * @param color The ANSI color associated with the log level.
  */
 enum class LogLevel(val tag: String, val color: AnsiColor) {
-    Debug("debug", AnsiColor.Green), Info("info", AnsiColor.Blue), Warn("warning", AnsiColor.Yellow), Error("error",
-            AnsiColor.Red);
+    /**
+     * Debug level for logging.
+     */
+    Debug("debug", AnsiColor.Green),
+    /**
+     * Info level for logging.
+     */
+    Info("info", AnsiColor.Blue),
+    /**
+     * Warn level for logging.
+     */
+    Warn("warning", AnsiColor.Yellow),
+    /**
+     * Error level for logging.
+     */
+    Error("error", AnsiColor.Red);
 }
 
 /**

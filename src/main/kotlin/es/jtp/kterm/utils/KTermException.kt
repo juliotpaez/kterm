@@ -6,7 +6,14 @@ import es.jtp.kterm.*
  * Generic exception for the [es.jtp.kterm] project.
  */
 open class KTermException : RuntimeException {
+    /**
+     * Creates a new [KTermException] with a message.
+     */
     constructor(message: String) : super(message)
+
+    /**
+     * Creates a new [KTermException] with a message and a cause.
+     */
     constructor(message: String, exception: Throwable) : super(message, exception)
 
     /**

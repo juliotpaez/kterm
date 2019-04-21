@@ -5,7 +5,8 @@ import es.jtp.kterm.*
 /**
  * Prompt builder for confirmation messages.
  */
-class ConfimationPromptBuilder internal constructor(private val message: String, private val color: AnsiColor = AnsiColor.Blue) {
+class ConfimationPromptBuilder internal constructor(private val message: String,
+                                                    private val color: AnsiColor = AnsiColor.Blue) {
     private var isInline = false
 
     /**

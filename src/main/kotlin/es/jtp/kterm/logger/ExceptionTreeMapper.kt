@@ -25,9 +25,8 @@ internal object ExceptionTreeMapper {
     /**
      * Makes a tree from an exception to map it to a [Logger].
      */
-    private fun treeFromException(
-            exception: Throwable, globalCommonCount: Int, upperCommonCount: Int, causes: MutableList<TreeNode>
-    ): Throwable? {
+    private fun treeFromException(exception: Throwable, globalCommonCount: Int, upperCommonCount: Int,
+                                  causes: MutableList<TreeNode>): Throwable? {
         val thisNode = TreeNode(exception, globalCommonCount, upperCommonCount, mutableListOf())
         causes.add(thisNode)
 
@@ -41,9 +40,8 @@ internal object ExceptionTreeMapper {
                 return currentCause
             }
 
-            currentCause = treeFromException(
-                    currentCause, upperCommonCount + lowerCommonCount, lowerCommonCount, thisNode.causes
-            )
+            currentCause = treeFromException(currentCause, upperCommonCount + lowerCommonCount, lowerCommonCount,
+                    thisNode.causes)
         }
 
         return null
@@ -98,6 +96,5 @@ internal object ExceptionTreeMapper {
     }
 }
 
-private data class TreeNode(
-        val exception: Throwable, val globalCommonCount: Int, val upperCommonCount: Int, val causes: MutableList<TreeNode>
-)
+private data class TreeNode(val exception: Throwable, val globalCommonCount: Int, val upperCommonCount: Int,
+                            val causes: MutableList<TreeNode>)

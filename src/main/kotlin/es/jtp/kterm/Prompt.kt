@@ -11,7 +11,8 @@ object Prompt {
      *
      * @return A result of the confimation.
      */
-    fun confirm(message: String, color: AnsiColor = AnsiColor.Blue, buildFunction: (ConfimationPromptBuilder.() -> Unit)? = null): Boolean {
+    fun confirm(message: String, color: AnsiColor = AnsiColor.Blue,
+                buildFunction: (ConfimationPromptBuilder.() -> Unit)? = null): Boolean {
         val prompt = ConfimationPromptBuilder(message, color)
         if (buildFunction != null) {
             buildFunction(prompt)
@@ -42,7 +43,8 @@ object Prompt {
      *
      * @return The selected option.
      */
-    fun menu(message: String, color: AnsiColor = AnsiColor.Blue, buildFunction: (MenuPromptBuilder.() -> Unit)? = null): String {
+    fun menu(message: String, color: AnsiColor = AnsiColor.Blue,
+             buildFunction: (MenuPromptBuilder.() -> Unit)? = null): String {
         val prompt = MenuPromptBuilder(message, color)
         if (buildFunction != null) {
             buildFunction(prompt)
