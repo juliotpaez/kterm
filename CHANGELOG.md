@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Change
 
 - **README**: updated documentation with some logging examples.
+- **README**: updated documentation with some prompt examples.
 - Now the `confirmation` and `menu` prompts are fully defined with a builder.
 
 ### Fixed

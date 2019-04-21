@@ -108,3 +108,91 @@ This shows in IntelliJ:
 
 ![log-example-error](./doc/img/log-example-full.png)
 
+## Prompt examples
+
+### Confirm prompt
+
+The confirm prompt, as its name says, is used to confirm an action with user.
+
+```kotlin
+var response = Prompt.confirm("This is a confirmation message")
+Logger.info("$response\n")
+
+response = Prompt.confirm("This is a multiline\nconfirmation message") {
+    promptColor(AnsiColor.Red)
+}
+Logger.info("$response\n")
+
+response = Prompt.confirm("This is a multiline\nconfirmation message") {
+    defaultValue(true)
+}
+Logger.info("$response\n")
+```
+
+Which will show in IntelliJ something like this:
+
+![log-example-error](./doc/img/prompt-confirm-simple.png)
+
+### Inline confirm prompt with error message
+
+The confirm prompt, as its name says, is used to confirm an action with user.
+
+```kotlin
+var response = Prompt.confirm("This is a confirmation message") {
+    inlineAnswer()
+}
+Logger.info("$response\n")
+
+response = Prompt.confirm("This is a multiline\nconfirmation message") {
+    inlineAnswer()
+}
+Logger.info("$response\n")
+```
+
+In IntelliJ:
+
+![log-example-error](./doc/img/prompt-confirm-inline-bad.png)
+
+### Menu
+
+The menu prompt shows a list of options and allows the user to select one of them.
+
+```kotlin
+var response = Prompt.menu("This is a menu message") {
+    addOption("Tag1", "This is the explanation of the option")
+    addOption("Tag2")
+    addOption("Tag3", "This is the explanation of the option\nin more than one line")
+}
+Logger.info("$response\n")
+
+response = Prompt.menu("This is a menu message") {
+    addOption("Tag1", "This is the explanation of the option")
+    addDefaultOption("default", "This is the default option")
+}
+Logger.info("$response\n")
+```
+
+After the execution in IntelliJ:
+
+![log-example-error](./doc/img/prompt-menu-simple.png)
+
+### Menu with actions
+
+In every option you can add a custom action to be executed whenever the option is selected.
+
+```kotlin
+val response = Prompt.menu("This is a menu message") {
+    addOption("hello", "Say hello!"){
+        Logger.debug("Hello you all!, I'm the hello option.")
+    }
+    addDefaultOption("default") {
+        Logger.warn(":( you haven't type anything")
+    }
+}
+Logger.info("Selected option = $response\n")
+```
+
+After execute it two times in IntelliJ:
+
+![log-example-error](./doc/img/prompt-menu-actions.png)
+
