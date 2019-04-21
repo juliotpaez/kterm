@@ -1,22 +1,31 @@
 package es.jtp.kterm.prompt
 
 import es.jtp.kterm.*
+import es.jtp.kterm.utils.*
 import kotlin.math.*
 
 /**
  * Prompt builder for selections.
  */
-class MenuPromptBuilder internal constructor(private val message: String,
-                                             private val color: AnsiColor = AnsiColor.Blue) {
+class MenuPromptBuilder internal constructor(private val message: String) {
+    private var color: AnsiColor = AnsiColor.Blue
     private var maxTagSize = 0
     private val optionsMap = mutableMapOf<String, Pair<String, (() -> Unit)?>>()
     private val optionsKeys = mutableListOf<String>()
     private var default: Pair<String, Pair<String, (() -> Unit)?>>? = null
 
     /**
+     * Sets the color of the prompt.
+     */
+    fun promptColor(color: AnsiColor) {
+        this.color = color
+    }
+
+    /**
      * Adds a new option with a custom tag and message.
      */
     fun addOption(tag: String, message: String = "", resultAction: (() -> Unit)? = null) {
+        val tag = tag.stringify()
         if (!optionsMap.containsKey(tag)) {
             maxTagSize = max(maxTagSize, tag.length)
             optionsKeys.add(tag)
@@ -29,14 +38,18 @@ class MenuPromptBuilder internal constructor(private val message: String,
      * Adds a default option with a custom tag and message.
      */
     fun addDefaultOption(tag: String, message: String = "", resultAction: (() -> Unit)? = null) {
-        default = Pair(tag, Pair(message, resultAction))
+        default = Pair(tag.stringify(), Pair(message, resultAction))
         maxTagSize = max(maxTagSize, "default".length)
     }
 
     /**
      * Gets the log message as a string formatted to be writen into an ANSI interpreter.
      */
-    fun toUnixString(): String {
+    internal fun toUnixString(): String {
+        if (default == null && optionsKeys.isEmpty()) {
+            throw KTermException("The menu prompt require at least one option")
+        }
+
         val sb = StringBuilder()
 
         sb.append(AnsiColor.boldText(message))
@@ -69,7 +82,7 @@ class MenuPromptBuilder internal constructor(private val message: String,
     /**
      * Checks if an input matches any of the tags.
      */
-    fun checkInput(input: String) = when {
+    internal fun checkInput(input: String) = when {
         optionsMap.containsKey(input) -> Pair(input, optionsMap[input]!!.second)
         default != null -> Pair(default!!.first, default!!.second.second)
         else -> null

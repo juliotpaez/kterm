@@ -11,9 +11,9 @@ object Prompt {
      *
      * @return A result of the confimation.
      */
-    fun confirm(message: String, color: AnsiColor = AnsiColor.Blue,
+    fun confirm(message: String,
                 buildFunction: (ConfimationPromptBuilder.() -> Unit)? = null): Boolean {
-        val prompt = ConfimationPromptBuilder(message, color)
+        val prompt = ConfimationPromptBuilder(message)
         if (buildFunction != null) {
             buildFunction(prompt)
         }
@@ -24,7 +24,11 @@ object Prompt {
 
             val answer = readLine() ?: ""
             when (answer.trim().toLowerCase()) {
-                "", "n", "no" -> break@loop
+                "" -> {
+                    result = prompt.defaultValue
+                    break@loop
+                }
+                "n", "no" -> break@loop
                 "y", "yes" -> {
                     result = true
                     break@loop
@@ -43,12 +47,9 @@ object Prompt {
      *
      * @return The selected option.
      */
-    fun menu(message: String, color: AnsiColor = AnsiColor.Blue,
-             buildFunction: (MenuPromptBuilder.() -> Unit)? = null): String {
-        val prompt = MenuPromptBuilder(message, color)
-        if (buildFunction != null) {
-            buildFunction(prompt)
-        }
+    fun menu(message: String, buildFunction: MenuPromptBuilder.() -> Unit): String {
+        val prompt = MenuPromptBuilder(message)
+        buildFunction(prompt)
 
         loop@ while (true) {
             print(prompt.toUnixString())
