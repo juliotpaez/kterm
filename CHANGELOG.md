@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Documentation**: in `html` and `markdown` format.
 
-### Change
+### Changed
 
 - **README**: updated documentation with some logging examples.
 - **README**: updated documentation with some prompt examples.
@@ -41,13 +41,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!--- Pattern for UNRELEASED
 ## [Unreleased]
 
-### Add
+### Added
 
-### Change
+### Changed
 
-### Remove
+### Removed
 
-### Fix
+### Fixed
 
 ### Security
 
