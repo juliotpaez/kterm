@@ -30,6 +30,11 @@ test {
 }
 
 dokka {
+    outputFormat = 'gfm'
+    outputDirectory = "$rootDir/doc/md"
+}
+
+task docInHtml (type: org.jetbrains.dokka.gradle.DokkaTask) {
     outputFormat = 'html'
-    outputDirectory = "$rootDir/doc"
+    outputDirectory = "$rootDir/doc/html"
 }

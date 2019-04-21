@@ -1,0 +1,7 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:es.jtp.kterm.utils$stringify(kotlin.String)es.jtp.kterm.utils/kotlin.-string/stringify.md
+es.jtp.kterm
+es.jtp.kterm.logger
+es.jtp.kterm.prompt
+es.jtp.kterm.utils
