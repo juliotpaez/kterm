@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Documentation**: in `html` and `markdown` format.
 
+### Change
+
+- **README**: updated documentation with some logging examples.
+
 ### Fixed
 
 - Bad representation for multiline messages in stack trace, source code title and source code message.
