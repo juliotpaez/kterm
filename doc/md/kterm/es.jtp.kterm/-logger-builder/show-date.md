@@ -1,4 +1,4 @@
-[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [Logger](index.md) / [showDate](./show-date.md)
+[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [LoggerBuilder](index.md) / [showDate](./show-date.md)
 
 # showDate
 

@@ -1,4 +1,4 @@
-[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [Logger](index.md) / [stack](./stack.md)
+[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [LoggerBuilder](index.md) / [stack](./stack.md)
 
 # stack
 

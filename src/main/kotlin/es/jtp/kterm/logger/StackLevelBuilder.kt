@@ -7,14 +7,14 @@ import es.jtp.kterm.utils.*
  * A stack level for logs.
  */
 internal data class StackLevel(val causedAt: Int, val causeMessage: String, val stackTrace: List<StackTrace>,
-                               val causes: List<StackLevel>) {
+        val causes: List<StackLevel>) {
     /**
      * Gets the stack level as a string formatted to be written into an ANSI interpreter.
      *
      * @return The number on entries inside it.
      */
-    internal fun toUnixString(sb: StringBuilder, logger: Logger, initPosition: Int, maxPositionDigits: Int,
-                              indent: Indent): Int {
+    internal fun toUnixString(sb: StringBuilder, logger: LoggerBuilder, initPosition: Int, maxPositionDigits: Int,
+            indent: Indent): Int {
         // Ignore the first cause if it is the same as the message.
         if (indent.times > 0 || logger.message != causeMessage) {
             // Empty first line only if there is no the first one.

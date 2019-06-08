@@ -2,7 +2,7 @@
 
 # confirm
 
-`fun confirm(message: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, color: `[`AnsiColor`](../-ansi-color/index.md)` = AnsiColor.Blue, buildFunction: (`[`ConfimationPromptBuilder`](../../es.jtp.kterm.prompt/-confimation-prompt-builder/index.md)`.() -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`)? = null): `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+`fun confirm(message: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, buildFunction: (`[`ConfimationPromptBuilder`](../../es.jtp.kterm.prompt/-confimation-prompt-builder/index.md)`.() -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`)? = null): `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 Generates a confirmation prompt to ask for a boolean value.
 

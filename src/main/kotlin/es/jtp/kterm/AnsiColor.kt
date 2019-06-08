@@ -9,7 +9,7 @@ package es.jtp.kterm
  * @param highIntensityBackgroundCode The code to change the background color. High intensity variation.
  */
 enum class AnsiColor(val textCode: String, val backgroundCode: String, val highIntensityTextCode: String,
-                     val highIntensityBackgroundCode: String) {
+        val highIntensityBackgroundCode: String) {
     /**
      * Black ANSI color codes.
      */

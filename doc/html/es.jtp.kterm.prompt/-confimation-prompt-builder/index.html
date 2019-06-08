@@ -1,8 +1,8 @@
 <HTML>
 <HEAD>
-<meta charset="UTF-8">
-<title>ConfimationPromptBuilder - </title>
-<link rel="stylesheet" href="../../style.css">
+    <meta charset="UTF-8">
+    <title>ConfimationPromptBuilder - </title>
+    <link href="../../style.css" rel="stylesheet">
 </HEAD>
 <BODY>
 <a href="../index.html">es.jtp.kterm.prompt</a>&nbsp;/&nbsp;<a href="./index.html">ConfimationPromptBuilder</a><br/>
@@ -12,26 +12,47 @@
 <p>Prompt builder for confirmation messages.</p>
 <h3>Functions</h3>
 <table>
-<tbody>
-<tr>
-<td>
-<p><a href="inline-answer.html">inlineAnswer</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">inlineAnswer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Inlines the answer with the question.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="to-unix-string.html">toUnixString</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">toUnixString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
-<p>Gets the log message as a string formatted to be writen into an ANSI interpreter.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="default-value.html">defaultValue</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">defaultValue</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.prompt.ConfimationPromptBuilder$defaultValue(kotlin.Boolean)/value">value</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span
+                    class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+            <p>Sets the default value in case of blank input.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="inline-answer.html">inlineAnswer</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">inlineAnswer</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Inlines the answer with the question.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="prompt-color.html">promptColor</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">promptColor</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.prompt.ConfimationPromptBuilder$promptColor(es.jtp.kterm.AnsiColor)/color">color</span><span
+                    class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm/-ansi-color/index.html"><span class="identifier">AnsiColor</span></a><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Sets the color of the prompt.</p>
+        </td>
+    </tr>
+    </tbody>
 </table>
 </BODY>
 </HTML>

@@ -1,8 +1,8 @@
 <HTML>
 <HEAD>
-<meta charset="UTF-8">
-<title>StackLevelBuilder - </title>
-<link rel="stylesheet" href="../../style.css">
+    <meta charset="UTF-8">
+    <title>StackLevelBuilder - </title>
+    <link href="../../style.css" rel="stylesheet">
 </HEAD>
 <BODY>
 <a href="../index.html">es.jtp.kterm.logger</a>&nbsp;/&nbsp;<a href="./index.html">StackLevelBuilder</a><br/>
@@ -12,40 +12,65 @@
 <p>A stack message builder for logs.</p>
 <h3>Constructors</h3>
 <table>
-<tbody>
-<tr>
-<td>
-<p><a href="-init-.html">&lt;init&gt;</a></p>
-</td>
-<td>
-<code><span class="identifier">StackLevelBuilder</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.StackLevelBuilder$<init>(kotlin.Int, kotlin.String)/causedAt">causedAt</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.StackLevelBuilder$<init>(kotlin.Int, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
-<p>A stack message builder for logs.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="-init-.html">&lt;init&gt;</a></p>
+        </td>
+        <td>
+            <code><span class="identifier">StackLevelBuilder</span><span class="symbol">(</span><span class="identifier"
+                                                                                                      id="es.jtp.kterm.logger.StackLevelBuilder$<init>(kotlin.Int, kotlin.String)/causedAt">causedAt</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
+                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                         id="es.jtp.kterm.logger.StackLevelBuilder$<init>(kotlin.Int, kotlin.String)/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">)</span></code>
+            <p>A stack message builder for logs.</p>
+        </td>
+    </tr>
+    </tbody>
 </table>
 <h3>Functions</h3>
 <table>
-<tbody>
-<tr>
-<td>
-<p><a href="add-cause.html">addCause</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">addCause</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.StackLevelBuilder$addCause(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.StackLevelBuilder$addCause(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">StackLevelBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a cause to the stack level.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="add-stack-trace.html">addStackTrace</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">addStackTrace</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.StackLevelBuilder$addStackTrace(kotlin.Function1((es.jtp.kterm.logger.StackTraceBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../-stack-trace-builder/index.html"><span class="identifier">StackTraceBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a stack trace to the common section or the private one depending on 'cause' is already set or not.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="add-cause.html">addCause</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">addCause</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.logger.StackLevelBuilder$addCause(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.logger.StackLevelBuilder$addCause(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">StackLevelBuilder</span></a><span
+                    class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span
+                    class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Adds a cause to the stack level.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="add-stack-trace.html">addStackTrace</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">addStackTrace</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.logger.StackLevelBuilder$addStackTrace(kotlin.Function1((es.jtp.kterm.logger.StackTraceBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span
+                    class="symbol">:</span>&nbsp;<a href="../-stack-trace-builder/index.html"><span class="identifier">StackTraceBuilder</span></a><span
+                    class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a
+                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Adds a stack trace to the common section or the private one depending on 'cause' is already set or
+                not.</p>
+        </td>
+    </tr>
+    </tbody>
 </table>
 </BODY>
 </HTML>

@@ -1,8 +1,8 @@
 <HTML>
 <HEAD>
-<meta charset="UTF-8">
-<title>Logger - </title>
-<link rel="stylesheet" href="../../style.css">
+    <meta charset="UTF-8">
+    <title>Logger - </title>
+    <link href="../../style.css" rel="stylesheet">
 </HEAD>
 <BODY>
 <a href="../index.html">es.jtp.kterm</a>&nbsp;/&nbsp;<a href="./index.html">Logger</a><br/>
@@ -12,130 +12,302 @@
 <p>Custom logs for the compiler.</p>
 <h3>Functions</h3>
 <table>
-<tbody>
-<tr>
-<td>
-<p><a href="add-note.html">addNote</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">addNote</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger$addNote(kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger$addNote(kotlin.String, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a custom note with a tag to the log.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="add-source-code.html">addSourceCode</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a custom source code builder to the log.</p>
-<code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a custom source code builder to the log with the file path of the content.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="add-tag.html">addTag</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">addTag</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger$addTag(kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a custom tag to the log.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="show-date.html">showDate</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">showDate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Shows the log date.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="show-stack-execution-order.html">showStackExecutionOrder</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">showStackExecutionOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Shows stack numbers.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="show-thread.html">showThread</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">showThread</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Shows the thread name.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="stack.html">stack</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">stack</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-stack-level-builder/index.html"><span class="identifier">StackLevelBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a custom stack level to the log.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="log-as-debug.html">logAsDebug</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">logAsDebug</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs at debug level.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="log-as-error.html">logAsError</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">logAsError</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs at error level.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="log-as-info.html">logAsInfo</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">logAsInfo</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs at info level.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="log-as-warn.html">logAsWarn</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">logAsWarn</span><span class="symbol">(</span><span
+                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs at warn level.</p>
+        </td>
+    </tr>
+    </tbody>
 </table>
 <h3>Companion Object Functions</h3>
 <table>
-<tbody>
-<tr>
-<td>
-<p><a href="debug.html">debug</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs a message at debug level.</p>
-<code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at debug level.</p>
-<code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at debug level with a custom message.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="error.html">error</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs a message at error level.</p>
-<code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at error level.</p>
-<code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at error level with a custom message.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="info.html">info</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs a message at info level.</p>
-<code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at info level.</p>
-<code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at info level with a custom message.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="warn.html">warn</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs a message at warn level.</p>
-<code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at warn level.</p>
-<code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.Logger, kotlin.Unit)))/buildFunction">buildFunction</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="./index.html"><span class="identifier">Logger</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Logs an exception at warn level with a custom message.</p>
-</td>
-</tr>
-</tbody>
+    <tbody>
+    <tr>
+        <td>
+            <p><a href="build.html">build</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$build(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$build(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span
+                    class="identifier">Logger</span></a></code>
+            <p>Builds a new <a href="./index.html">Logger</a> logging a message.</p>
+            <code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$build(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$build(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span
+                    class="identifier">Logger</span></a></code>
+            <p>Builds a new <a href="./index.html">Logger</a> logging an exception.</p>
+            <code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$build(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$build(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$build(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span
+                    class="identifier">Logger</span></a></code>
+            <p>Builds a new <a href="./index.html">Logger</a> logging an exception with a custom message.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="debug.html">debug</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs a message at debug level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$debug(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$debug(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at debug level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">debug</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$debug(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at debug level with a custom message.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="error.html">error</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs a message at error level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$error(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$error(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at error level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$error(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at error level with a custom message.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="info.html">info</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs a message at info level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$info(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$info(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at info level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">info</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$info(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at info level with a custom message.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><a href="warn.html">warn</a></p>
+        </td>
+        <td>
+            <code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs a message at warn level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$warn(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$warn(kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at warn level.</p>
+            <code><span class="keyword">fun </span><span class="identifier">warn</span><span class="symbol">(</span><span
+                    class="identifier"
+                    id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/message">message</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
+                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                            id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/exception">exception</span><span
+                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span
+                    class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier"
+                                                                                               id="es.jtp.kterm.Logger.Companion$warn(kotlin.String, kotlin.Throwable, kotlin.Function1((es.jtp.kterm.LoggerBuilder, kotlin.Unit)))/buildFunction">buildFunction</span><span
+                    class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="../-logger-builder/index.html"><span
+                    class="identifier">LoggerBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
+                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">?</span>&nbsp;<span
+                    class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
+                    class="identifier">Unit</span></a></code>
+            <p>Logs an exception at warn level with a custom message.</p>
+        </td>
+    </tr>
+    </tbody>
 </table>
 </BODY>
 </HTML>

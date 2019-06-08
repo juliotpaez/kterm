@@ -11,8 +11,7 @@ object Prompt {
      *
      * @return A result of the confimation.
      */
-    fun confirm(message: String,
-                buildFunction: (ConfimationPromptBuilder.() -> Unit)? = null): Boolean {
+    fun confirm(message: String, buildFunction: (ConfimationPromptBuilder.() -> Unit)? = null): Boolean {
         val prompt = ConfimationPromptBuilder(message)
         if (buildFunction != null) {
             buildFunction(prompt)

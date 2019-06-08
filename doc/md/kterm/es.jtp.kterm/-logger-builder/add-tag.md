@@ -1,4 +1,4 @@
-[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [Logger](index.md) / [addTag](./add-tag.md)
+[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [LoggerBuilder](index.md) / [addTag](./add-tag.md)
 
 # addTag
 

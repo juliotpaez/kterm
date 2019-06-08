@@ -34,7 +34,7 @@ dokka {
     outputDirectory = "$rootDir/doc/md"
 }
 
-task docInHtml (type: org.jetbrains.dokka.gradle.DokkaTask) {
+task docInHtml(type: org.jetbrains.dokka.gradle.DokkaTask) {
     outputFormat = 'html'
     outputDirectory = "$rootDir/doc/html"
 }

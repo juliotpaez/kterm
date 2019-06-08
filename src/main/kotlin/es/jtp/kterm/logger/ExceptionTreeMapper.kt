@@ -4,17 +4,17 @@ import es.jtp.kterm.*
 
 
 /**
- * Mapper to structure a [Throwable] like a [Logger].
+ * Mapper to structure a [Throwable] like a [LoggerBuilder].
  */
 internal object ExceptionTreeMapper {
     /**
-     * Creates a [Logger] from an exception.
+     * Creates a [LoggerBuilder] from an exception.
      */
-    fun createLogger(message: String, exception: Throwable, logLevel: LogLevel): Logger {
+    fun createLogger(message: String, exception: Throwable): LoggerBuilder {
         val causes = mutableListOf<TreeNode>()
         treeFromException(exception, 0, 0, causes)
 
-        val builder = Logger(message, logLevel)
+        val builder = LoggerBuilder(message, LogLevel.Error)
         builder.stack(exception.message ?: "") {
             mapTree(causes[0], this)
         }
@@ -23,10 +23,10 @@ internal object ExceptionTreeMapper {
     }
 
     /**
-     * Makes a tree from an exception to map it to a [Logger].
+     * Makes a tree from an exception to map it to a [LoggerBuilder].
      */
     private fun treeFromException(exception: Throwable, globalCommonCount: Int, upperCommonCount: Int,
-                                  causes: MutableList<TreeNode>): Throwable? {
+            causes: MutableList<TreeNode>): Throwable? {
         val thisNode = TreeNode(exception, globalCommonCount, upperCommonCount, mutableListOf())
         causes.add(thisNode)
 
@@ -97,4 +97,4 @@ internal object ExceptionTreeMapper {
 }
 
 private data class TreeNode(val exception: Throwable, val globalCommonCount: Int, val upperCommonCount: Int,
-                            val causes: MutableList<TreeNode>)
+        val causes: MutableList<TreeNode>)

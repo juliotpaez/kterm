@@ -7,12 +7,12 @@ import es.jtp.kterm.utils.*
  * A stack message for logs.
  */
 internal data class StackTrace(val className: String?, val methodName: String?, val message: String?,
-                               val filePath: String?, val line: Int?, val column: Int?) {
+        val filePath: String?, val line: Int?, val column: Int?) {
     /**
-     * Gets the stack trace as a string formatted to be writen into an ANSI interpreter.
+     * Gets the stack trace as a string formatted to be written into an ANSI interpreter.
      */
-    internal fun toUnixString(sb: StringBuilder, logger: Logger, position: Int, maxPositionDigits: Int,
-                              indent: Indent) {
+    internal fun toUnixString(sb: StringBuilder, logger: LoggerBuilder, position: Int, maxPositionDigits: Int,
+            indent: Indent) {
         var innerIndent = indent.getLength()
 
         sb.append(indent.indent)
@@ -146,6 +146,6 @@ class StackTraceBuilder {
     /**
      * Creates a new [StackTrace] from this builder.
      */
-    internal fun toStackTrace() = StackTrace(className?.stringify(), methodName?.stringify(), message,
-            filePath?.stringify(), line, column)
+    internal fun toStackTrace() =
+            StackTrace(className?.stringify(), methodName?.stringify(), message, filePath?.stringify(), line, column)
 }

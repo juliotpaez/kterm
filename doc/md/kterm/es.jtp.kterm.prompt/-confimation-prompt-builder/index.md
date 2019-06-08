@@ -10,5 +10,6 @@ Prompt builder for confirmation messages.
 
 | Name | Summary |
 |---|---|
+| [defaultValue](default-value.md) | `fun defaultValue(value: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Sets the default value in case of blank input. |
 | [inlineAnswer](inline-answer.md) | `fun inlineAnswer(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Inlines the answer with the question. |
-| [toUnixString](to-unix-string.md) | `fun toUnixString(): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>Gets the log message as a string formatted to be writen into an ANSI interpreter. |
+| [promptColor](prompt-color.md) | `fun promptColor(color: `[`AnsiColor`](../../es.jtp.kterm/-ansi-color/index.md)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Sets the color of the prompt. |

@@ -7,11 +7,11 @@ import es.jtp.kterm.utils.*
  * A source code for logs.
  */
 internal data class SourceCode(val content: String, val filename: String?, val title: String?,
-                               val fromIndex: Pair<Int, Int>, val toIndex: Pair<Int, Int>, val message: String?) {
+        val fromIndex: Pair<Int, Int>, val toIndex: Pair<Int, Int>, val message: String?) {
     /**
-     * Gets the source code as a string formatted to be writen into an ANSI interpreter.
+     * Gets the source code as a string formatted to be written into an ANSI interpreter.
      */
-    internal fun toUnixString(sb: StringBuilder, logger: Logger, indent: Indent) {
+    internal fun toUnixString(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
         // File position
         if (filename != null) {
             sb.append(indent.indent)
@@ -44,7 +44,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
     /**
      * Prints one-line messages.
      */
-    private fun logOneLine(sb: StringBuilder, logger: Logger, indent: Indent) {
+    private fun logOneLine(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
         val currentRow = fromIndex.first
         val line: String = content.lineSequence().elementAt(currentRow - 1)
         var innerIndent = 0
@@ -94,7 +94,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
     /**
      * Prints multiline messages with less than 10 lines.
      */
-    private fun logLess10Multiline(sb: StringBuilder, logger: Logger, indent: Indent) {
+    private fun logLess10Multiline(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
         val maxNumDigits = Math.ceil(Math.log10(toIndex.first + 0.0)).toInt()
 
         // Upper line.
@@ -163,7 +163,7 @@ internal data class SourceCode(val content: String, val filename: String?, val t
     /**
      * Prints multiline messages with more than 10 lines.
      */
-    private fun logMore10Multiline(sb: StringBuilder, logger: Logger, indent: Indent) {
+    private fun logMore10Multiline(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
         val maxNumDigits = Math.ceil(Math.log10(toIndex.first + 0.0)).toInt()
 
         // Upper line.

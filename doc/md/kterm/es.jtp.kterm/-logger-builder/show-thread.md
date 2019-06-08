@@ -1,4 +1,4 @@
-[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [Logger](index.md) / [showThread](./show-thread.md)
+[kterm](../../index.md) / [es.jtp.kterm](../index.md) / [LoggerBuilder](index.md) / [showThread](./show-thread.md)
 
 # showThread
 
