@@ -68,9 +68,9 @@ internal object ExceptionTreeMapper {
                 addStackTrace {
                     method(lvl.className, lvl.methodName)
                     if (lvl.lineNumber < 0) {
-                        location(lvl.fileName)
+                        location(lvl.fileName ?: "<undefined>")
                     } else {
-                        location(lvl.fileName, lvl.lineNumber)
+                        location(lvl.fileName ?: "<undefined>", lvl.lineNumber)
                     }
                 }
 
