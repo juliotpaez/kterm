@@ -6,8 +6,9 @@ import es.jtp.kterm.utils.*
 /**
  * A source code for logs.
  */
-internal data class SourceCode(val content: String, val filename: String?, val title: String?,
-        val fromIndex: Pair<Int, Int>, val toIndex: Pair<Int, Int>, val message: String?) {
+internal data class SourceCode(internal val content: String, internal val filename: String?,
+        internal val title: String?, internal val fromIndex: Pair<Int, Int>, internal val toIndex: Pair<Int, Int>,
+        internal val message: String?, val printer: SourceCodePrinters) {
     /**
      * Gets the source code as a string formatted to be written into an ANSI interpreter.
      */
@@ -31,235 +32,22 @@ internal data class SourceCode(val content: String, val filename: String?, val t
             }
         }
 
+        // Get the printer.
+        val printer = printer.printer
+
         // Filter by line count.
         val lines = countLines()
         indent.times = Math.ceil(Math.log10(lines + fromIndex.first + 0.0)).toInt()
         when {
-            lines == 1 -> logOneLine(sb, logger, indent)
-            lines <= 10 -> logLess10Multiline(sb, logger, indent)
-            else -> logMore10Multiline(sb, logger, indent)
-        }
-    }
-
-    /**
-     * Prints one-line messages.
-     */
-    private fun logOneLine(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
-        val currentRow = fromIndex.first
-        val line: String = content.lineSequence().elementAt(currentRow - 1)
-        var innerIndent = 0
-
-        // Upper line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("┌─"))
-        if (title != null) {
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
-        }
-        sb.append('\n')
-
-        // Code line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("|"))
-        sb.append(' ')
-        var text = currentRow.toString()
-        innerIndent += text.length
-        sb.append(logger.level.color.boldAndColorText(text))
-        sb.append(' ')
-        sb.append("  $line\n")
-
-        // Symbol line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("└─>"))
-        sb.append(" ".repeat(fromIndex.second + 2))
-
-        val length = toIndex.second - fromIndex.second + 1
-        text = when (length) {
-            1 -> "^"
-            else -> "─".repeat(length)
-        }
-
-        when {
-            message.isNullOrBlank() -> sb.append(logger.level.color.boldAndColorText(text))
-            else -> {
-                sb.append(logger.level.color.boldAndColorText(text))
-                sb.append(' ')
-                sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + fromIndex.second + 4 + length)))
-            }
-        }
-
-        sb.append('\n')
-    }
-
-    /**
-     * Prints multiline messages with less than 10 lines.
-     */
-    private fun logLess10Multiline(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
-        val maxNumDigits = Math.ceil(Math.log10(toIndex.first + 0.0)).toInt()
-
-        // Upper line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("┌─"))
-        if (title != null) {
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
-        }
-        sb.append('\n')
-
-        // Content lines.
-        var currentRow = fromIndex.first
-        val lineSequence = content.lineSequence().drop(currentRow - 1).take(toIndex.first - currentRow + 1)
-        for (line in lineSequence) {
-            // Code line.
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(currentRow.toString().padStart(maxNumDigits, ' ')))
-            sb.append("  ")
-
-            when (currentRow) {
-                fromIndex.first -> {
-                    if (fromIndex.second != 0) {
-                        sb.append(logger.level.color.boldAndColorText("·".repeat(fromIndex.second - 1)))
-                    }
-                    sb.append("${line.substring(fromIndex.second - 1)}\n")
-                }
-                toIndex.first -> {
-                    sb.append(getString(0, toIndex.second, line))
-
-                    val index = line.length - toIndex.second + 1
-                    if (index > 0) {
-                        sb.append(logger.level.color.boldAndColorText("·".repeat(index - 1)))
-                    }
-                    sb.append('\n')
-                }
-                else -> {
-                    sb.append("$line\n")
-                }
-            }
-
-            currentRow += 1
-        }
-
-        // Symbol line.
-        if (message.isNullOrBlank()) {
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─"))
-            sb.append('\n')
-        } else {
-            // Empty line
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append('\n')
-
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─>"))
-            sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + 2)))
-            sb.append('\n')
-        }
-    }
-
-    /**
-     * Prints multiline messages with more than 10 lines.
-     */
-    private fun logMore10Multiline(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
-        val maxNumDigits = Math.ceil(Math.log10(toIndex.first + 0.0)).toInt()
-
-        // Upper line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("┌─"))
-        if (title != null) {
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(indentText(title, "${indent.indent}|  ")))
-        }
-        sb.append('\n')
-
-        // Content upper lines.
-        var currentRow = fromIndex.first
-        var lineSequence = content.lineSequence().drop(currentRow).take(5)
-        for (line in lineSequence) {
-            // Code line.
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(currentRow.toString().padStart(maxNumDigits, ' ')))
-            sb.append("  ")
-
-            if (currentRow == fromIndex.first) {
-                if (fromIndex.second != 0) {
-                    sb.append(logger.level.color.boldAndColorText("·".repeat(fromIndex.second - 1)))
-                }
-                sb.append("${getString(fromIndex.second - 1, line.length, line)}\n")
-            } else {
-                sb.append("$line\n")
-            }
-
-            currentRow += 1
-        }
-
-        // Dotted line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("·"))
-        sb.append("   ")
-        sb.append(logger.level.color.boldAndColorText(" ".padStart(maxNumDigits, ' ')))
-        sb.append(logger.level.color.boldAndColorText("···"))
-        sb.append('\n')
-
-        // Content lower lines.
-        currentRow = toIndex.first - 4
-        lineSequence = content.lineSequence().drop(currentRow).take(5)
-        for (line in lineSequence) {
-            // Code line.
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append(' ')
-            sb.append(logger.level.color.boldAndColorText(currentRow.toString().padStart(maxNumDigits, ' ')))
-            sb.append("  ")
-
-            if (currentRow == toIndex.first) {
-                sb.append(getString(0, toIndex.second, line))
-
-                val index = line.length - toIndex.second + 1
-                if (index > 0) {
-                    sb.append(logger.level.color.boldAndColorText("·".repeat(index - 1)))
-                }
-                sb.append('\n')
-            } else {
-                sb.append("${getString(0, line.length, line)}\n")
-            }
-
-            currentRow += 1
-        }
-
-        // Symbol line.
-        if (message.isNullOrBlank()) {
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─"))
-            sb.append('\n')
-        } else {
-            // Empty line
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append('\n')
-
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─>"))
-            sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(message, indent.getLength() + 2)))
-            sb.append('\n')
+            lines == 1 -> printer.logOneLine(this, sb, logger, indent)
+            lines <= 10 -> printer.logLess10Multiline(this, sb, logger, indent)
+            else -> printer.logMore10Multiline(this, sb, logger, indent)
         }
     }
 
     private fun isOneChar() = fromIndex.first == toIndex.first && fromIndex.second == toIndex.second + 1
 
     private fun countLines() = toIndex.first - fromIndex.first + 1
-
-    private fun getString(from: Int, to: Int, text: String) = when {
-        from > text.length -> ""
-        to > text.length -> text.substring(from)
-        else -> text.substring(from, to)
-    }
 }
 
 /**
@@ -270,12 +58,20 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
     private var fromRowColumn: Pair<Int, Int>? = null
     private var toRowColumn: Pair<Int, Int>? = null
     private var message: String? = null
+    private var printer = SourceCodePrinters.Coloring
 
     /**
      * Sets a title for the source code block.
      */
     fun title(title: String) {
         this.title = title
+    }
+
+    /**
+     * Uses the erasing printer instead of the coloring one.
+     */
+    fun useErasingPrinter() {
+        printer = SourceCodePrinters.Erasing
     }
 
     /**
@@ -356,7 +152,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             throw KTermException("The source code requires at least a position to highlight")
         }
 
-        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message)
+        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message, printer)
     }
 
     private fun checkRowColumn(row: Int, column: Int) {
