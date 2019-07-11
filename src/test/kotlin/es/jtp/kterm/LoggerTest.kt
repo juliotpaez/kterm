@@ -11,22 +11,56 @@ internal class LoggerTest {
         Logger.error("This is the main message") {
             addSourceCode(text, null) {
                 highlightAt(5)
-                message("Try adding the end quote  here")
+                message("This is a message")
+                useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(2, 5)
-                message("Try adding the end quote  here")
+                message("This is a message")
+                useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(4, 60)
-                message("Try adding the end quote  here")
+                message("This is a message")
+                useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
-                highlightSection(4, 150)
-                message("Try adding the end quote  here")
+                highlightSection(4, 152)
+                message("This is a message")
+                useErasingPrinter()
+            }
+        }
+
+        Logger.info("This is the main message") {
+            addSourceCode(text, null) {
+                highlightAt(5)
+                message("This is a message")
+                printMessageAtBottom()
+                useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(2, 5)
+                message("This is a message")
+                printMessageAtBottom()
+                useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(4, 60)
+                message("This is a message")
+                printMessageAtBottom()
+                useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(4, 152)
+                message("This is a message")
+                printMessageAtBottom()
+                useErasingPrinter()
             }
         }
 

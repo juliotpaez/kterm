@@ -2,6 +2,8 @@ package es.jtp.kterm.logger
 
 import es.jtp.kterm.*
 import es.jtp.kterm.utils.*
+import kotlin.math.ceil
+import kotlin.math.log10
 
 internal object SourceCodeErasingPrinter : SourceCodePrinter {
     /**
@@ -31,28 +33,32 @@ internal object SourceCodeErasingPrinter : SourceCodePrinter {
         sb.append(' ')
         sb.append("  $line\n")
 
-        // Symbol line.
-        sb.append(indent.indent)
-        sb.append(logger.level.color.boldAndColorText("└─>"))
-        sb.append(" ".repeat(source.fromIndex.second + 2))
-
+        // Message line.
+        val maxNumDigits = ceil(log10(source.toIndex.first + 0.0)).toInt()
         val length = source.toIndex.second - source.fromIndex.second + 1
-        text = when (length) {
-            1 -> "^"
-            else -> "─".repeat(length)
-        }
 
-        when {
-            source.message.isNullOrBlank() -> sb.append(logger.level.color.boldAndColorText(text))
-            else -> {
-                sb.append(logger.level.color.boldAndColorText(text))
-                sb.append(' ')
-                sb.append(AnsiColor.boldText(
+        if(length == 1 || !source.inlineMessage) {
+            logMessageLine(source, sb, logger, indent, maxNumDigits)
+        }
+        else {
+            sb.append(indent.indent)
+            sb.append(logger.level.color.boldAndColorText("└─>"))
+            sb.append(" ".repeat(source.fromIndex.second + 2))
+
+            text = "─".repeat(length)
+
+            when {
+                source.message.isNullOrBlank() -> sb.append(logger.level.color.boldAndColorText(text))
+                else -> {
+                    sb.append(logger.level.color.boldAndColorText(text))
+                    sb.append(' ')
+                    sb.append(AnsiColor.boldText(
                         indentText(source.message, indent.getLength() + source.fromIndex.second + 4 + length)))
+                }
             }
-        }
 
-        sb.append('\n')
+            sb.append('\n')
+        }
     }
 
     /**
@@ -106,23 +112,8 @@ internal object SourceCodeErasingPrinter : SourceCodePrinter {
             currentRow += 1
         }
 
-        // Symbol line.
-        if (source.message.isNullOrBlank()) {
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─"))
-            sb.append('\n')
-        } else {
-            // Empty line
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append('\n')
-
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─>"))
-            sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
-            sb.append('\n')
-        }
+        // Message line.
+        logMessageLine(source, sb, logger, indent, maxNumDigits)
     }
 
     /**
@@ -197,22 +188,40 @@ internal object SourceCodeErasingPrinter : SourceCodePrinter {
             currentRow += 1
         }
 
-        // Symbol line.
+        // Message line.
+        logMessageLine(source, sb, logger, indent, maxNumDigits)
+    }
+
+    /**
+     * Prints the message line.
+     */
+    private fun logMessageLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent, maxNumDigits:Int) {
         if (source.message.isNullOrBlank()) {
             sb.append(indent.indent)
             sb.append(logger.level.color.boldAndColorText("└─"))
             sb.append('\n')
         } else {
-            // Empty line
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("|"))
-            sb.append('\n')
+            if(source.inlineMessage) {
+                sb.append(indent.indent)
+                sb.append(logger.level.color.boldAndColorText("└─>"))
+                sb.append(" ".repeat(maxNumDigits + source.toIndex.second))
+                sb.append(logger.level.color.boldAndColorText("^"))
+                sb.append(' ')
+                sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
+                sb.append('\n')
+            }
+            else {
+                // Empty line
+                sb.append(indent.indent)
+                sb.append(logger.level.color.boldAndColorText("|"))
+                sb.append('\n')
 
-            sb.append(indent.indent)
-            sb.append(logger.level.color.boldAndColorText("└─>"))
-            sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
-            sb.append('\n')
+                sb.append(indent.indent)
+                sb.append(logger.level.color.boldAndColorText("└─>"))
+                sb.append(' ')
+                sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
+                sb.append('\n')
+            }
         }
     }
 }

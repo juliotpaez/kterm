@@ -8,7 +8,7 @@ import es.jtp.kterm.utils.*
  */
 internal data class SourceCode(internal val content: String, internal val filename: String?,
         internal val title: String?, internal val fromIndex: Pair<Int, Int>, internal val toIndex: Pair<Int, Int>,
-        internal val message: String?, val printer: SourceCodePrinters) {
+        internal val message: String?, val printer: SourceCodePrinters, internal val inlineMessage: Boolean) {
     /**
      * Gets the source code as a string formatted to be written into an ANSI interpreter.
      */
@@ -59,6 +59,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
     private var toRowColumn: Pair<Int, Int>? = null
     private var message: String? = null
     private var printer = SourceCodePrinters.Coloring
+    private var inlineMessage = true
 
     /**
      * Sets a title for the source code block.
@@ -72,6 +73,13 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
      */
     fun useErasingPrinter() {
         printer = SourceCodePrinters.Erasing
+    }
+
+    /**
+     * Prints the message separated at the bottom instead of inline with the code.
+     */
+    fun printMessageAtBottom() {
+        inlineMessage = false
     }
 
     /**
@@ -152,7 +160,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             throw KTermException("The source code requires at least a position to highlight")
         }
 
-        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message, printer)
+        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message, printer, inlineMessage)
     }
 
     private fun checkRowColumn(row: Int, column: Int) {
