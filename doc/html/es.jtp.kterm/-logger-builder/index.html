@@ -1,8 +1,8 @@
 <HTML>
 <HEAD>
-    <meta charset="UTF-8">
-    <title>LoggerBuilder - </title>
-    <link href="../../style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>LoggerBuilder - </title>
+<link rel="stylesheet" href="../../style.css">
 </HEAD>
 <BODY>
 <a href="../index.html">es.jtp.kterm</a>&nbsp;/&nbsp;<a href="./index.html">LoggerBuilder</a><br/>
@@ -12,126 +12,73 @@
 <p>A builder for <a href="../-logger/index.html">Logger</a>.</p>
 <h3>Functions</h3>
 <table>
-    <tbody>
-    <tr>
-        <td>
-            <p><a href="add-note.html">addNote</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">addNote</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$addNote(kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a
-                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span
-                    class="symbol">, </span><span class="identifier"
-                                                  id="es.jtp.kterm.LoggerBuilder$addNote(kotlin.String, kotlin.String)/message">message</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a
-                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-            <p>Adds a custom note with a tag to the log.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="add-source-code.html">addSourceCode</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                            id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span
-                    class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span
-                    class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
-                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Adds a custom source code builder to the log.</p>
-            <code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                            id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/filename">filename</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">, </span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span
-                    class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span
-                    class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
-                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Adds a custom source code builder to the log with the file path of the content.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="add-tag.html">addTag</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">addTag</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$addTag(kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a
-                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Adds a custom tag to the log.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="show-date.html">showDate</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">showDate</span><span class="symbol">(</span><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Shows the log date.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="show-stack-execution-order.html">showStackExecutionOrder</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">showStackExecutionOrder</span><span class="symbol">(</span><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Shows stack numbers.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="show-thread.html">showThread</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">showThread</span><span class="symbol">(</span><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Shows the thread name.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="stack.html">stack</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">stack</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.LoggerBuilder$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/message">message</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                            id="es.jtp.kterm.LoggerBuilder$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span
-                    class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-stack-level-builder/index.html"><span
-                    class="identifier">StackLevelBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span
-                    class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Adds a custom stack level to the log.</p>
-        </td>
-    </tr>
-    </tbody>
+<tbody>
+<tr>
+<td>
+<p><a href="add-note.html">addNote</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addNote</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addNote(kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addNote(kotlin.String, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom note with a tag to the log.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-source-code.html">addSourceCode</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom source code builder to the log.</p>
+<code><span class="keyword">fun </span><span class="identifier">addSourceCode</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addSourceCode(kotlin.String, kotlin.String, kotlin.Function1((es.jtp.kterm.logger.SourceCodeBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-source-code-builder/index.html"><span class="identifier">SourceCodeBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom source code builder to the log with the file path of the content.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-tag.html">addTag</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addTag</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$addTag(kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom tag to the log.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="show-date.html">showDate</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">showDate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shows the log date.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="show-stack-execution-order.html">showStackExecutionOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">showStackExecutionOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shows stack numbers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="show-thread.html">showThread</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">showThread</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shows the thread name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stack.html">stack</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">stack</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.LoggerBuilder$stack(kotlin.String, kotlin.Function1((es.jtp.kterm.logger.StackLevelBuilder, kotlin.Unit)))/builderFunction">builderFunction</span><span class="symbol">:</span>&nbsp;<a href="../../es.jtp.kterm.logger/-stack-level-builder/index.html"><span class="identifier">StackLevelBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom stack level to the log.</p>
+</td>
+</tr>
+</tbody>
 </table>
 </BODY>
 </HTML>

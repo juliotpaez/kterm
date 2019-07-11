@@ -1,8 +1,8 @@
 <HTML>
 <HEAD>
-    <meta charset="UTF-8">
-    <title>SourceCodeBuilder - </title>
-    <link href="../../style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>SourceCodeBuilder - </title>
+<link rel="stylesheet" href="../../style.css">
 </HEAD>
 <BODY>
 <a href="../index.html">es.jtp.kterm.logger</a>&nbsp;/&nbsp;<a href="./index.html">SourceCodeBuilder</a><br/>
@@ -12,115 +12,82 @@
 <p>A source code builder for logs.</p>
 <h3>Constructors</h3>
 <table>
-    <tbody>
-    <tr>
-        <td>
-            <p><a href="-init-.html">&lt;init&gt;</a></p>
-        </td>
-        <td>
-            <code><span class="identifier">SourceCodeBuilder</span><span class="symbol">(</span><span class="identifier"
-                                                                                                      id="es.jtp.kterm.logger.SourceCodeBuilder$<init>(kotlin.String, kotlin.String)/content">content</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                            id="es.jtp.kterm.logger.SourceCodeBuilder$<init>(kotlin.String, kotlin.String)/filename">filename</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span
-                    class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">)</span></code>
-            <p>A source code builder for logs.</p>
-        </td>
-    </tr>
-    </tbody>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SourceCodeBuilder</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$<init>(kotlin.String, kotlin.String)/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$<init>(kotlin.String, kotlin.String)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">)</span></code>
+<p>A source code builder for logs.</p>
+</td>
+</tr>
+</tbody>
 </table>
 <h3>Functions</h3>
 <table>
-    <tbody>
-    <tr>
-        <td>
-            <p><a href="highlight-at.html">highlightAt</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int)/position">position</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Sets a position of the content to highlight.</p>
-            <code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/row">row</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                         id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/column">column</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Sets a position of the content to highlight.
-                The position is represented as a row-column pair.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="highlight-section.html">highlightSection</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/from">from</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                         id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/to">to</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Sets the section of the content to highlight.</p>
-            <code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowFrom">rowFrom</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                         id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnFrom">columnFrom</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                         id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowTo">rowTo</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier"
-                                                                                         id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnTo">columnTo</span><span
-                    class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span
-                    class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Sets the section of the content to highlight.
-                Positions are represented as row-column pairs.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="message.html">message</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">message</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$message(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a
-                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Adds a custom message to the source code message.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><a href="title.html">title</a></p>
-        </td>
-        <td>
-            <code><span class="keyword">fun </span><span class="identifier">title</span><span class="symbol">(</span><span
-                    class="identifier"
-                    id="es.jtp.kterm.logger.SourceCodeBuilder$title(kotlin.String)/title">title</span><span class="symbol">:</span>&nbsp;<a
-                    href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span
-                    class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span
-                    class="identifier">Unit</span></a></code>
-            <p>Sets a title for the source code block.</p>
-        </td>
-    </tr>
-    </tbody>
+<tbody>
+<tr>
+<td>
+<p><a href="highlight-at.html">highlightAt</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a position of the content to highlight.</p>
+<code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/row">row</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/column">column</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a position of the content to highlight.
+The position is represented as a row-column pair.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="highlight-section.html">highlightSection</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the section of the content to highlight.</p>
+<code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowFrom">rowFrom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnFrom">columnFrom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowTo">rowTo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnTo">columnTo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the section of the content to highlight.
+Positions are represented as row-column pairs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="message.html">message</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">message</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$message(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a custom message to the source code message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="print-message-at-bottom.html">printMessageAtBottom</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">printMessageAtBottom</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Prints the message separated at the bottom instead of inline with the code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="title.html">title</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">title</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$title(kotlin.String)/title">title</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a title for the source code block.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="use-erasing-printer.html">useErasingPrinter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">useErasingPrinter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Uses the erasing printer instead of the coloring one.</p>
+</td>
+</tr>
+</tbody>
 </table>
 </BODY>
 </HTML>

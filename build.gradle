@@ -29,7 +29,7 @@ test {
     useJUnitPlatform()
 }
 
-dokka {
+task docInMarkdown(type: org.jetbrains.dokka.gradle.DokkaTask) {
     outputFormat = 'gfm'
     outputDirectory = "$rootDir/doc/md"
 }

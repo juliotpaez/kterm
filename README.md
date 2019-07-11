@@ -4,7 +4,7 @@ A mix between a terminal logger and a terminal input for kotlin. Its syntax is b
 
 ## API
 
-See [API](./doc/md/kterm/index.md)
+See [API](./doc/md/index.md)
 
 ## Log examples
 
