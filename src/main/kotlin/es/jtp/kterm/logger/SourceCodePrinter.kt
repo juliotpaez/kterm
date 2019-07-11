@@ -39,5 +39,5 @@ internal interface SourceCodePrinter {
  */
 internal enum class SourceCodePrinters(val printer: SourceCodePrinter) {
     Coloring(SourceCodeColoringPrinter),
-    Erasing(SourceCodeColoringPrinter)
+    Erasing(SourceCodeErasingPrinter)
 }
