@@ -100,7 +100,7 @@ internal object SourceCodeColoringPrinter : SourceCodePrinter {
         }
 
         // Message line.
-        logMessageLine(source, sb, logger, indent, maxNumDigits)
+        logMessageLine(source, sb, logger, indent, maxNumDigits - 1)
     }
 
     /**
@@ -180,28 +180,28 @@ internal object SourceCodeColoringPrinter : SourceCodePrinter {
         }
 
         // Message line.
-        logMessageLine(source, sb, logger, indent, maxNumDigits)
+        logMessageLine(source, sb, logger, indent, maxNumDigits - 1)
     }
 
     /**
      * Prints the message line.
      */
-    private fun logMessageLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent, maxNumDigits:Int) {
+    private fun logMessageLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent,
+            maxNumDigits: Int) {
         if (source.message.isNullOrBlank()) {
             sb.append(indent.indent)
             sb.append(logger.level.color.boldAndColorText("└─"))
             sb.append('\n')
         } else {
-            if(source.inlineMessage) {
+            if (source.inlineMessage) {
                 sb.append(indent.indent)
                 sb.append(logger.level.color.boldAndColorText("└─>"))
-                sb.append(" ".repeat(maxNumDigits + source.toIndex.second))
+                sb.append(" ".repeat(maxNumDigits + source.toIndex.second + 1))
                 sb.append(logger.level.color.boldAndColorText("^"))
                 sb.append(' ')
                 sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
                 sb.append('\n')
-            }
-            else {
+            } else {
                 // Empty line
                 sb.append(indent.indent)
                 sb.append(logger.level.color.boldAndColorText("|"))
@@ -209,7 +209,7 @@ internal object SourceCodeColoringPrinter : SourceCodePrinter {
 
                 sb.append(indent.indent)
                 sb.append(logger.level.color.boldAndColorText("└─>"))
-                sb.append(' ')
+                sb.append("  ")
                 sb.append(AnsiColor.boldText(indentText(source.message, indent.getLength() + 2)))
                 sb.append('\n')
             }

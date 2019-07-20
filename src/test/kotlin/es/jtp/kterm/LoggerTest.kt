@@ -4,33 +4,55 @@ import org.junit.jupiter.api.*
 
 internal class LoggerTest {
     @Test
-    @Disabled
     fun `test to see the logs`() {
-        val text = List(20) { "this is a text" }.joinToString("\n")
+        val text = List(20) { "012345678" }.joinToString("\n")
         val source = "path/to/file.test"
+
         Logger.error("This is the main message") {
             addSourceCode(text, null) {
                 highlightAt(5)
                 message("This is a message")
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(2, 5)
                 message("This is a message")
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(4, 60)
                 message("This is a message")
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(4, 152)
                 message("This is a message")
-                useErasingPrinter()
+                // useErasingPrinter()
+            }
+        }
+
+        Logger.warn("This is the main message") {
+            addSourceCode(text, null) {
+                highlightAt(5)
+                // useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(2, 5)
+                // useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(4, 60)
+                // useErasingPrinter()
+            }
+            addSourceCode(text, source) {
+                title("Title")
+                highlightSection(4, 152)
+                // useErasingPrinter()
             }
         }
 
@@ -39,28 +61,28 @@ internal class LoggerTest {
                 highlightAt(5)
                 message("This is a message")
                 printMessageAtBottom()
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(2, 5)
                 message("This is a message")
                 printMessageAtBottom()
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(4, 60)
                 message("This is a message")
                 printMessageAtBottom()
-                useErasingPrinter()
+                // useErasingPrinter()
             }
             addSourceCode(text, source) {
                 title("Title")
                 highlightSection(4, 152)
                 message("This is a message")
                 printMessageAtBottom()
-                useErasingPrinter()
+                // useErasingPrinter()
             }
         }
 
