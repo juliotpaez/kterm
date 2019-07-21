@@ -2,33 +2,54 @@ package es.jtp.kterm.logger
 
 import es.jtp.kterm.*
 import es.jtp.kterm.utils.*
+import kotlin.math.*
 
 /**
  * A source code for logs.
  */
-internal data class SourceCode(internal val content: String, internal val filename: String?,
-        internal val title: String?, internal val fromIndex: Pair<Int, Int>, internal val toIndex: Pair<Int, Int>,
-        internal val message: String?, val printer: SourceCodePrinters, internal val inlineMessage: Boolean) {
+internal data class SourceCode(val content: String, val filename: String?, val title: String?, val fromIndex: Position,
+        val toIndex: Position, val message: String?, val printer: SourceCodePrinters, val inlineMessage: Boolean,
+        val isCursorLikeMessage: Boolean, val showNewlineChars: Boolean) {
+
+    val contentLineSequence: Sequence<String>
+
+    init {
+        val lineSequence = content.lineSequence()
+        val count = lineSequence.count()
+
+        contentLineSequence = lineSequence.mapIndexed { index, s ->
+            if (index == count - 1) {
+                s
+            } else {
+                if (showNewlineChars) {
+                    "$s↩"
+                } else {
+                    "$s "
+                }
+            }
+        }
+    }
+
     /**
      * Gets the source code as a string formatted to be written into an ANSI interpreter.
      */
     internal fun toUnixString(sb: StringBuilder, logger: LoggerBuilder, indent: Indent) {
         // File position
         if (filename != null) {
-            sb.append(indent.indent)
+            sb.append(indent.textIndent)
             sb.deleteCharAt(sb.lastIndex)
             sb.append(logger.level.color.boldAndColorText("-->"))
             sb.append(' ')
 
             if (isOneChar()) {
-                sb.append("$filename:${fromIndex.first}:${fromIndex.second}\n")
+                sb.append("$filename:${fromIndex.row}:${fromIndex.column}\n")
             } else {
-                sb.append("${AnsiColor.boldText("from")}: $filename:${fromIndex.first}:${fromIndex.second}\n")
+                sb.append("${AnsiColor.boldText("from")}: $filename:${fromIndex.row}:${fromIndex.column}\n")
 
-                sb.append(indent.indent)
+                sb.append(indent.textIndent)
                 sb.deleteCharAt(sb.lastIndex)
                 sb.append(logger.level.color.boldAndColorText("-->"))
-                sb.append("   ${AnsiColor.boldText("to")}: $filename:${toIndex.first}:${toIndex.second}\n")
+                sb.append("   ${AnsiColor.boldText("to")}: $filename:${toIndex.row}:${toIndex.column}\n")
             }
         }
 
@@ -36,18 +57,23 @@ internal data class SourceCode(internal val content: String, internal val filena
         val printer = printer.printer
 
         // Filter by line count.
-        val lines = countLines()
-        indent.times = Math.ceil(Math.log10(lines + fromIndex.first + 0.0)).toInt()
-        when {
-            lines == 1 -> printer.logOneLine(this, sb, logger, indent)
-            lines <= 10 -> printer.logLess10Multiline(this, sb, logger, indent)
-            else -> printer.logMore10Multiline(this, sb, logger, indent)
+        if (isCursorLikeMessage) {
+            printer.logCursorLikeLine(this, sb, logger, indent)
+        } else {
+            val lines = countLines()
+            val newIndent = Indent(indent.textIndent, ceil(log10(lines + fromIndex.row + 0.0)).toInt())
+            when {
+
+                lines == 1 -> printer.logOneLine(this, sb, logger, newIndent)
+                lines <= 10 -> printer.logLess10Multiline(this, sb, logger, newIndent)
+                else -> printer.logMore10Multiline(this, sb, logger, newIndent)
+            }
         }
     }
 
-    private fun isOneChar() = fromIndex.first == toIndex.first && fromIndex.second == toIndex.second + 1
+    private fun isOneChar() = fromIndex.row == toIndex.row && fromIndex.column == toIndex.column + 1
 
-    private fun countLines() = toIndex.first - fromIndex.first + 1
+    private fun countLines() = toIndex.row - fromIndex.row + 1
 }
 
 /**
@@ -55,11 +81,13 @@ internal data class SourceCode(internal val content: String, internal val filena
  */
 class SourceCodeBuilder(private val content: String, private val filename: String?) {
     private var title: String? = null
-    private var fromRowColumn: Pair<Int, Int>? = null
-    private var toRowColumn: Pair<Int, Int>? = null
+    private var fromRowColumn: Position? = null
+    private var toRowColumn: Position? = null
     private var message: String? = null
     private var printer = SourceCodePrinters.Coloring
     private var inlineMessage = true
+    private var isCursorLikeMessage = false
+    private var showNewlineChars = false
 
     /**
      * Sets a title for the source code block.
@@ -83,36 +111,39 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
     }
 
     /**
-     * Sets a position of the content to highlight.
+     * Prints the newline characters in the code.
      */
-    fun highlightAt(position: Int) {
+    fun showNewlineChars() {
+        showNewlineChars = true
+    }
+
+    /**
+     * Sets a cursor position at the specified position of the content.
+     */
+    fun highlightCursorAt(position: Int) {
         if (position < 0) {
             throw KTermException("The 'position' parameter can't be lower than 0.")
         }
         if (position > content.length) {
-            throw KTermException("The 'position' parameter can't be greater than the content length.")
+            throw KTermException("The 'position' parameter can't be greater than the contentLineSequence length.")
         }
 
         fromRowColumn = indexToRowColumn(position)
         toRowColumn = fromRowColumn
+        isCursorLikeMessage = true
     }
 
     /**
-     * Sets a position of the content to highlight.
-     * The position is represented as a row-column pair.
+     * Sets the character of the content to highlight.
      */
-    fun highlightAt(row: Int, column: Int) {
-        checkRowColumn(row, column)
-        fromRowColumn = Pair(row, column)
-        toRowColumn = Pair(row, column)
-    }
+    fun highlightSection(position: Int) = highlightSection(position, position)
 
     /**
      * Sets the section of the content to highlight.
      */
     fun highlightSection(from: Int, to: Int) {
-        if (to > content.length) {
-            throw KTermException("The 'to' parameter can't be greater than the content length.")
+        if (to >= content.length) {
+            throw KTermException("The 'to' parameter can't be greater or equal than the contentLineSequence length.")
         }
         if (from < 0) {
             throw KTermException("The 'fromRowColumn' parameter can't be lower than 0.")
@@ -123,26 +154,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
 
         fromRowColumn = indexToRowColumn(from)
         toRowColumn = indexToRowColumn(to)
-    }
-
-
-    /**
-     * Sets the section of the content to highlight.
-     * Positions are represented as row-column pairs.
-     */
-    fun highlightSection(rowFrom: Int, columnFrom: Int, rowTo: Int, columnTo: Int) {
-        if (rowTo < rowFrom) {
-            throw KTermException("The 'rowTo' parameter must be greater or equal than the 'rowFrom' parameter.")
-        }
-        if (rowFrom == rowTo && columnTo < columnFrom) {
-            throw KTermException(
-                    "The 'columnTo' parameter must be greater or equal than the 'columnFrom' parameter if both rows are the same.")
-        }
-
-        checkRowColumn(rowFrom, columnFrom)
-        checkRowColumn(rowTo, columnTo)
-        fromRowColumn = Pair(rowFrom, columnFrom)
-        toRowColumn = Pair(rowTo, columnTo)
+        isCursorLikeMessage = false
     }
 
     /**
@@ -160,7 +172,8 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             throw KTermException("The source code requires at least a position to highlight")
         }
 
-        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message, printer, inlineMessage)
+        return SourceCode(content, filename, title, fromRowColumn!!, toRowColumn!!, message, printer, inlineMessage,
+                isCursorLikeMessage, showNewlineChars)
     }
 
     private fun checkRowColumn(row: Int, column: Int) {
@@ -206,7 +219,7 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
         throw KTermException("The row-column pair ($row, $column) is not correct for the specified content: $content")
     }
 
-    private fun indexToRowColumn(index: Int): Pair<Int, Int> {
+    private fun indexToRowColumn(index: Int): Position {
         if (index > content.length) {
             throw KTermException("The index is not in the range [0, ${content.length})")
         }
@@ -239,6 +252,6 @@ class SourceCodeBuilder(private val content: String, private val filename: Strin
             }
         }
 
-        return Pair(row, column)
+        return Position(index, row, column)
     }
 }

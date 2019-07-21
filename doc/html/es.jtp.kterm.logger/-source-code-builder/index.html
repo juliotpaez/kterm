@@ -29,14 +29,11 @@
 <tbody>
 <tr>
 <td>
-<p><a href="highlight-at.html">highlightAt</a></p>
+<p><a href="highlight-cursor-at.html">highlightCursorAt</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Sets a position of the content to highlight.</p>
-<code><span class="keyword">fun </span><span class="identifier">highlightAt</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/row">row</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightAt(kotlin.Int, kotlin.Int)/column">column</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Sets a position of the content to highlight.
-The position is represented as a row-column pair.</p>
+<code><span class="keyword">fun </span><span class="identifier">highlightCursorAt</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightCursorAt(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a cursor position at the specified position of the content.</p>
 </td>
 </tr>
 <tr>
@@ -44,11 +41,10 @@ The position is represented as a row-column pair.</p>
 <p><a href="highlight-section.html">highlightSection</a></p>
 </td>
 <td>
+<code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the character of the content to highlight.</p>
 <code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Sets the section of the content to highlight.</p>
-<code><span class="keyword">fun </span><span class="identifier">highlightSection</span><span class="symbol">(</span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowFrom">rowFrom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnFrom">columnFrom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/rowTo">rowTo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="es.jtp.kterm.logger.SourceCodeBuilder$highlightSection(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/columnTo">columnTo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Sets the section of the content to highlight.
-Positions are represented as row-column pairs.</p>
 </td>
 </tr>
 <tr>
@@ -67,6 +63,15 @@ Positions are represented as row-column pairs.</p>
 <td>
 <code><span class="keyword">fun </span><span class="identifier">printMessageAtBottom</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Prints the message separated at the bottom instead of inline with the code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="show-newline-chars.html">showNewlineChars</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">showNewlineChars</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Prints the newline characters in the code.</p>
 </td>
 </tr>
 <tr>

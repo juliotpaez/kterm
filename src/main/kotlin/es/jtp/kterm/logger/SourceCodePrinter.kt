@@ -8,6 +8,11 @@ import es.jtp.kterm.utils.*
  */
 internal interface SourceCodePrinter {
     /**
+     * Prints cursor-like messages.
+     */
+    fun logCursorLikeLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
+
+    /**
      * Prints one-line messages.
      */
     fun logOneLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
@@ -21,17 +26,6 @@ internal interface SourceCodePrinter {
      * Prints multiline messages with more than 10 lines.
      */
     fun logMore10Multiline(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
-
-    companion object {
-        /**
-         * Gets a string between the specified bounds.
-         */
-        fun getString(from: Int, to: Int, text: String) = when {
-            from > text.length -> ""
-            to > text.length -> text.substring(from)
-            else -> text.substring(from, to)
-        }
-    }
 }
 
 /**

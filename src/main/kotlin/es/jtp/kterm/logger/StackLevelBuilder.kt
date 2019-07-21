@@ -19,17 +19,15 @@ internal data class StackLevel(val causedAt: Int, val causeMessage: String, val 
         if (indent.times > 0 || logger.message != causeMessage) {
             // Empty first line only if there is no the first one.
             if (indent.times > 0) {
-                sb.append(indent.indent)
-                sb.append(indent.timesIndent)
+                sb.append(indent.textIndent)
                 sb.append('\n')
             }
 
             val text = ". cause:"
-            sb.append(indent.indent)
-            sb.append(indent.timesIndent)
+            sb.append(indent.textIndent)
             sb.append(logger.level.color.boldAndColorText(text))
             sb.append(' ')
-            sb.append(AnsiColor.boldText(indentText(causeMessage, indent.getLength() + text.length + 1)))
+            sb.append(AnsiColor.boldText(indentText(causeMessage, indent.textIndent.length + text.length + 1)))
             sb.append('\n')
         }
 
@@ -38,12 +36,10 @@ internal data class StackLevel(val causedAt: Int, val causeMessage: String, val 
         for (i in stackTrace.lastIndex downTo 0) {
             while (causeIndex >= 0 && causes[causeIndex].causedAt == i) {
                 currentPosition = causes[causeIndex].toUnixString(sb, logger, currentPosition, maxPositionDigits,
-                        Indent(indent.indent, indent.times + 1,
-                                indent.timesIndent + "${logger.level.color.boldAndColorText("|")} "))
+                        Indent(indent.textIndent + "${logger.level.color.boldAndColorText("|")} ", indent.times + 1))
 
                 // Empty last line.
-                sb.append(indent.indent)
-                sb.append(indent.timesIndent)
+                sb.append(indent.textIndent)
                 sb.append(logger.level.color.boldAndColorText("|--"))
                 sb.append('\n')
 

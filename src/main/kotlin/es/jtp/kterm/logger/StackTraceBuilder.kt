@@ -13,10 +13,9 @@ internal data class StackTrace(val className: String?, val methodName: String?, 
      */
     internal fun toUnixString(sb: StringBuilder, logger: LoggerBuilder, position: Int, maxPositionDigits: Int,
             indent: Indent) {
-        var innerIndent = indent.getLength()
+        var innerIndent = indent.textIndent.length
 
-        sb.append(indent.indent)
-        sb.append(indent.timesIndent)
+        sb.append(indent.textIndent)
 
         sb.append(logger.level.color.boldAndColorText("|"))
         sb.append(' ')
@@ -63,7 +62,7 @@ internal data class StackTrace(val className: String?, val methodName: String?, 
         if (message != null) {
             sb.append(' ')
             sb.append(indentText(message,
-                    "${indent.indent}${logger.level.color.boldAndColorText("|")}${" ".repeat(innerIndent - 1)}",
+                    "${indent.textIndent}${logger.level.color.boldAndColorText("|")}${" ".repeat(innerIndent - 1)}",
                     AnsiColor.Companion::boldText))
         }
 

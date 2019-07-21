@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.7-beta] - 2019-07-21
+
+### Add
+
+- Option for to show newline characters.
+
+### Change
+
+- Simplify source code printing.
+
+### :bug: Fix
+
+- Representations of multiline source code elements.
+
+
+## [0.1.6-beta] - **SKIPPED**
+
 ## [0.1.5-beta] - 2019-07-11
 
 ### Add

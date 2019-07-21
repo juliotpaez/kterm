@@ -122,16 +122,16 @@ class LoggerBuilder internal constructor(internal val message: String, internal 
 
         sb.append('\n')
 
-        val mainIndentText = " ".repeat(3)
+        val fixedIndentText = " ".repeat(3)
+        val mainIndent = Indent(fixedIndentText, 0)
 
         // Stack
         if (stack != null) {
             val initPosition = stack!!.countStackLength()
-            stack!!.toUnixString(sb, this, initPosition, Math.ceil(Math.log10(initPosition + 0.0)).toInt(),
-                    Indent(mainIndentText, 0, ""))
+            stack!!.toUnixString(sb, this, initPosition, Math.ceil(Math.log10(initPosition + 0.0)).toInt(), mainIndent)
 
             if (sourceCodes.isNotEmpty()) {
-                sb.append(mainIndentText)
+                sb.append(fixedIndentText)
                 sb.append(level.color.boldAndColorText("|"))
                 sb.append('\n')
             }
@@ -139,14 +139,14 @@ class LoggerBuilder internal constructor(internal val message: String, internal 
 
         // Source codes
         for (sourceCode in sourceCodes) {
-            sourceCode.toUnixString(sb, this, Indent(mainIndentText, 0, ""))
+            sourceCode.toUnixString(sb, this, mainIndent)
         }
 
         // Notes
         for (note in notes) {
-            val innerIndent = mainIndentText.length + 4 + note.tag.length
+            val innerIndent = fixedIndentText.length + 4 + note.tag.length
 
-            sb.append(mainIndentText)
+            sb.append(fixedIndentText)
             sb.append(level.color.boldAndColorText("="))
             sb.append(" ${note.tag}")
 
