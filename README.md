@@ -6,6 +6,12 @@ A mix between a terminal logger and a terminal input for kotlin. Its syntax is b
 
 See [API](./doc/md/index.md)
 
+## Next release
+
+- Config objects to use the same configuration for all logs.
+- Code sections with highlighted code.
+- Rendered whitespace.
+
 ## Log examples
 
 ### Logging an Exception
