@@ -7,6 +7,8 @@ import es.jtp.kterm.logger.*
  */
 class Logger internal constructor(private val builder: LoggerBuilder,
         internal val buildFunction: (LoggerBuilder.() -> Unit)? = null) {
+    private var wasInvoked = buildFunction == null
+
     /**
      * Logs at debug level.
      */
@@ -31,8 +33,9 @@ class Logger internal constructor(private val builder: LoggerBuilder,
      * Logs at error level.
      */
     private fun logAs(level: LogLevel) {
-        if (buildFunction != null) {
-            buildFunction.invoke(builder)
+        if (!wasInvoked) {
+            buildFunction!!.invoke(builder)
+            wasInvoked = true
         }
 
         builder.level = level
