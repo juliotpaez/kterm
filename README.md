@@ -20,9 +20,9 @@ To log an `Exception` showing the date, the thread and the execution order, use:
 
 ```kotlin
 Logger.error(this) {
-    showDate()
-    showThread()
-    showStackExecutionOrder()
+    showDate = true
+    showThread = true
+    showStackNumbers = true
 }
 ```
 
@@ -39,8 +39,8 @@ Notes are tagged messages that give more contextual information about the logged
 ```kotlin
 Logger.info("This is the message of the info log")
 Logger.debug("This is the message of the debug log.\nEvery multiline string is correctly indented.") {
-    showDate()
-    showThread()
+    showDate = true
+    showThread = true
     addNote("hint", "this can be a multiline\nstring too")
     addNote("<hint 2>", "many notes can be set in just one log")
 }
@@ -58,49 +58,40 @@ Note that the stack trace is represented in the reverse way that you input the s
 
 ```kotlin
 Logger.warn("A warning message.\nIn two lines.\nOr more.") {
-    showDate()
-    showThread()
+    showDate = true
+    showThread = true
+    showStackNumbers = true
 
     // Custom stack.
-    stack("This is the main message of the stack.") {
-        addStackTrace {
-            location("path/to/file.txt")
+    setStack {
+        addStackTrace("path/to/file.txt")
+        addStackTrace("path/to/file2.txt", line = 25) {
+            message = "A custom message for this stack trace.\nIn two lines.\nOr more."
+            methodName = "methodName"
         }
-        addStackTrace {
-            location("path/to/file2.txt", line = 25)
-            message("A custom message for this stack trace.\nIn two lines.\nOr more.")
-            method("methodName")
-        }
-        addStackTrace {
-            location("path/to/file3.txt", line = 25, column = 3)
-            message("A custom message for this stack trace.")
+        addStackTrace("path/to/file3.txt", line = 25, column = 3) {
+            message = "A custom message for this stack trace."
         }
 
         addCause("This is a sub-cause.") {
-            addStackTrace {
-                location("path/to/file.txt")
-            }
-            addStackTrace {
-                location("path/to/file2.txt")
-            }
+            addStackTrace("path/to/file.txt")
+            addStackTrace("path/to/file2.txt")
         }
 
-        addStackTrace {
-            location("path/to/file4.txt")
-        }
+        addStackTrace("path/to/file4.txt")
     }
 
     // Add custom source code hints.
     addSourceCode("source\ncontent\nof more than\none\nline") {
-        title("This is the title.\nIn two lines.")
-        highlightAt(row = 1, column = 3)
-        message("This is the message to explain\nthe highlighted section")
+        title = "This is the title.\nIn two lines."
+        highlightCursorAt(4)
+        message = "This is the message to explain\nthe highlighted section"
     }
 
     addSourceCode("source\ncontent\nof more than\none\nline", "path/to/file4.txt") {
-        title("This is the title.")
-        highlightSection(rowFrom = 1, columnFrom = 2, rowTo = 4, columnTo = 2)
-        message("This is the message to explain the highlighted section\none\nline")
+        title = "This is the title."
+        highlightSection(3, 29)
+        message = "This is the message to explain the highlighted section\none\nline"
     }
 
     addTag("Tag 1")

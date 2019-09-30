@@ -60,7 +60,7 @@ class MenuPromptBuilder internal constructor(private val message: String) {
             sb.append(AnsiColor.boldText(key))
             sb.append(" ".repeat(maxTagSize - key.length))
             sb.append("  ")
-            sb.append(indentText(optionsMap[key]!!.first, maxTagSize + 6))
+            sb.append(Indent.indentText(optionsMap[key]!!.first, maxTagSize + 6))
             sb.append('\n')
         }
 
@@ -69,7 +69,7 @@ class MenuPromptBuilder internal constructor(private val message: String) {
             sb.append(color.boldAndColorText("default"))
             sb.append(" ".repeat(maxTagSize - "default".length))
             sb.append("  ")
-            sb.append(indentText(default!!.second.first, maxTagSize + 6))
+            sb.append(Indent.indentText(default!!.second.first, maxTagSize + 6))
             sb.append('\n')
         }
 

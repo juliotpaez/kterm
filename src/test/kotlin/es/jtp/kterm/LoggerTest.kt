@@ -4,101 +4,101 @@ import org.junit.jupiter.api.*
 
 internal class LoggerTest {
     @Test
-    fun `test to see the logs`() {
-        val text = List(16) { "${(it + 1).toString().padStart(2, '-')}2345678" }.joinToString("\n") + "9"
-        val source = "path/to/file.test"
+    fun `test to see the stack`() {
+        val logger = Logger("This is the main message\nline2\nline3") {
+            showDate = true
+            showThread = true
+            showStackNumbers = true
 
-        Logger.error("This is the main message") {
-            addSourceCode(text, null) {
-                highlightCursorAt(6)
-                message("This is a message\nmultiline")
-                useErasingPrinter()
+
+            setStack {
+                addStackTrace("file\nmultiline") {
+                    className = "class\nmultiline"
+                    methodName = "method\nmultiline"
+                }
+                addStackTrace("1")
+                addStackTrace("2")
+                addCause("Cause 1\nline2\nline3") {
+                    addStackTrace("5")
+                }
+                addStackTrace("3")
+                addCause("Cause 2\nline2\nline3")
+                addStackTrace("4")
             }
-            addSourceCode(text, null) {
-                highlightSection(4)
-                message("This is a message\nmultiline")
+
+            addSourceCode("This is the main message\nline2\nline3") {
                 useErasingPrinter()
+                highlightSection(1, 2)
+                message = "Test\nis\nok"
+                showNewlineChars = true
             }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(152, 155)
-                message("This is a message\nmultiline")
+
+            addSourceCode(
+                    "line1\nline2\nline3\nline3\nline4\nline5\nline6\nline7\nline8\nline9\nline10\nline11\nline12\nline13\nline14\nline15\nline16\nline17\nline18") {
                 useErasingPrinter()
+                highlightSection(14, 16)
+                message = "Test\nis\nok"
+                title = "xxx"
+                showNewlineChars = true
             }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(135, 152)
-                message("This is a message\nmultiline")
-                useErasingPrinter()
-            }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(4, 152)
-                message("This is a message\nmultiline")
-                useErasingPrinter()
-            }
+
+            setCause("What's up")
         }
 
-        Logger.warn("This is the main message") {
-            addSourceCode(text, null) {
-                highlightCursorAt(5)
-                useErasingPrinter()
-            }
-            addSourceCode(text, null) {
-                highlightSection(5)
-                useErasingPrinter()
-            }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(2, 5)
-                useErasingPrinter()
-            }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(4, 60)
-                useErasingPrinter()
-            }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(4, 152)
-                useErasingPrinter()
-            }
-        }
+        logger.logAsDebug()
+        logger.logAsInfo()
+        logger.logAsWarn()
+        logger.logAsError()
 
-        Logger.info("This is the main message") {
-            addSourceCode(text, null) {
-                highlightCursorAt(5)
-                message("This is a message\nmultiline")
-                printMessageAtBottom()
-                useErasingPrinter()
+        println(logger.toString(LogLevel.Debug))
+        println(logger.toString(LogLevel.Info))
+        println(logger.toString(LogLevel.Warn))
+        println(logger.toString(LogLevel.Error))
+    }
+
+    @Test
+    fun `test to see the readme`() {
+        Logger.warn("A warning message.\nIn two lines.\nOr more.") {
+            showDate = true
+            showThread = true
+            showStackNumbers = true
+
+            // Custom stack.
+            setStack {
+                addStackTrace("path/to/file.txt")
+                addStackTrace("path/to/file2.txt", line = 25) {
+                    message = "A custom message for this stack trace.\nIn two lines.\nOr more."
+                    methodName = "methodName"
+                }
+                addStackTrace("path/to/file3.txt", line = 25, column = 3) {
+                    message = "A custom message for this stack trace."
+                }
+
+                addCause("This is a sub-cause.") {
+                    addStackTrace("path/to/file.txt")
+                    addStackTrace("path/to/file2.txt")
+                }
+
+                addStackTrace("path/to/file4.txt")
             }
-            addSourceCode(text, null) {
-                highlightSection(5)
-                message("This is a message\nmultiline")
-                printMessageAtBottom()
-                useErasingPrinter()
+
+            // Add custom source code hints.
+            addSourceCode("source\ncontent\nof more than\none\nline") {
+                title = "This is the title.\nIn two lines."
+                highlightCursorAt(4)
+                message = "This is the message to explain\nthe highlighted section"
             }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(2, 5)
-                message("This is a message\nmultiline")
-                printMessageAtBottom()
-                useErasingPrinter()
+
+            addSourceCode("source\ncontent\nof more than\none\nline", "path/to/file4.txt") {
+                title = "This is the title."
+                highlightSection(3, 29)
+                message = "This is the message to explain the highlighted section\none\nline"
             }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(4, 60)
-                message("This is a message\nmultiline")
-                printMessageAtBottom()
-                useErasingPrinter()
-            }
-            addSourceCode(text, source) {
-                title("Title")
-                highlightSection(4, 152)
-                message("This is a message\nmultiline")
-                printMessageAtBottom()
-                useErasingPrinter()
-            }
+
+            addTag("Tag 1")
+            addTag("Tag 2")
+            addNote("Note 1", "the two above lines are tags, like notes without message.")
+            addNote("Note 2", "this is a note message.\nIn two lines.")
         }
     }
 }

@@ -4,18 +4,18 @@ import es.jtp.kterm.*
 
 
 /**
- * Mapper to structure a [Throwable] like a [LoggerBuilder].
+ * Mapper to structure a [Throwable] like a [Logger].
  */
 internal object ExceptionTreeMapper {
     /**
-     * Creates a [LoggerBuilder] from an exception.
+     * Creates a [Logger] from an exception.
      */
-    fun createLogger(message: String, exception: Throwable): LoggerBuilder {
+    fun createLogger(message: String, exception: Throwable): Logger {
         val causes = mutableListOf<TreeNode>()
         treeFromException(exception, 0, 0, causes)
 
-        val builder = LoggerBuilder(message, LogLevel.Error)
-        builder.stack(exception.message ?: "") {
+        val builder = Logger(message)
+        builder.setStack {
             mapTree(causes[0], this)
         }
 
@@ -23,7 +23,7 @@ internal object ExceptionTreeMapper {
     }
 
     /**
-     * Makes a tree from an exception to map it to a [LoggerBuilder].
+     * Makes a tree from an exception to map it to a [Logger].
      */
     private fun treeFromException(exception: Throwable, globalCommonCount: Int, upperCommonCount: Int,
             causes: MutableList<TreeNode>): Throwable? {
@@ -47,7 +47,7 @@ internal object ExceptionTreeMapper {
         return null
     }
 
-    private fun mapTree(treeNode: TreeNode, builder: StackLevelBuilder) {
+    private fun mapTree(treeNode: TreeNode, builder: StackLogger) {
         builder.apply {
             val stackTrace = treeNode.exception.stackTrace
 
@@ -65,12 +65,15 @@ internal object ExceptionTreeMapper {
                 }
 
                 val lvl = stackTrace[i]
-                addStackTrace {
-                    method(lvl.className, lvl.methodName)
-                    if (lvl.lineNumber < 0) {
-                        location(lvl.fileName ?: "<undefined>")
-                    } else {
-                        location(lvl.fileName ?: "<undefined>", lvl.lineNumber)
+                if (lvl.lineNumber < 0) {
+                    addStackTrace(lvl.fileName ?: "<undefined>") {
+                        className = lvl.className
+                        methodName = lvl.methodName
+                    }
+                } else {
+                    addStackTrace(lvl.fileName ?: "<undefined>", lvl.lineNumber) {
+                        className = lvl.className
+                        methodName = lvl.methodName
                     }
                 }
 

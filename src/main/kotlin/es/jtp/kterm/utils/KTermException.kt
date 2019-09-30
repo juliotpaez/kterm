@@ -21,9 +21,9 @@ open class KTermException : RuntimeException {
      */
     open fun logMessage() {
         Logger.error(this) {
-            showDate()
-            showThread()
-            showStackExecutionOrder()
+            showDate = true
+            showThread = true
+            showStackNumbers
         }
     }
 }

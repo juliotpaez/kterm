@@ -1,7 +1,7 @@
 package es.jtp.kterm.logger
 
 import es.jtp.kterm.*
-import es.jtp.kterm.utils.*
+import es.jtp.kterm.logger.printers.*
 
 /**
  * A different code for logs.
@@ -10,28 +10,28 @@ internal interface SourceCodePrinter {
     /**
      * Prints cursor-like messages.
      */
-    fun logCursorLikeLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
+    fun logCursorLikeLine(source: SourceCodeLogger, level: LogLevel, logger: Logger): String
 
     /**
      * Prints one-line messages.
      */
-    fun logOneLine(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
+    fun logOneLine(source: SourceCodeLogger, level: LogLevel, logger: Logger): String
 
     /**
      * Prints multiline messages with less than 10 lines.
      */
-    fun logLess10Multiline(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
+    fun logLess10Multiline(source: SourceCodeLogger, level: LogLevel, logger: Logger): String
 
     /**
      * Prints multiline messages with more than 10 lines.
      */
-    fun logMore10Multiline(source: SourceCode, sb: StringBuilder, logger: LoggerBuilder, indent: Indent)
+    fun logMore10Multiline(source: SourceCodeLogger, level: LogLevel, logger: Logger): String
 }
 
 /**
  * The types of source code printers.
  */
-internal enum class SourceCodePrinters(val printer: SourceCodePrinter) {
-    Coloring(SourceCodeColoringPrinter),
-    Erasing(SourceCodeErasingPrinter)
+internal enum class SourceCodePrinters(val unixPrinter: SourceCodePrinter, val normalPrinter: SourceCodePrinter) {
+    Coloring(SourceCodeColoringUnixPrinter, SourceCodeColoringPrinter),
+    Erasing(SourceCodeErasingUnixPrinter, SourceCodeErasingPrinter) // TODO
 }
