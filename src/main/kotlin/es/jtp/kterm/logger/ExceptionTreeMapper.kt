@@ -8,18 +8,15 @@ import es.jtp.kterm.*
  */
 internal object ExceptionTreeMapper {
     /**
-     * Creates a [Logger] from an exception.
+     * Maps an exception to the specify [Logger].
      */
-    fun createLogger(message: String, exception: Throwable): Logger {
+    fun mapException(builder: Logger, exception: Throwable) {
         val causes = mutableListOf<TreeNode>()
         treeFromException(exception, 0, 0, causes)
 
-        val builder = Logger(message)
         builder.setStack {
             mapTree(causes[0], this)
         }
-
-        return builder
     }
 
     /**

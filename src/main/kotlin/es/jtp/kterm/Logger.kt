@@ -10,7 +10,8 @@ import kotlin.math.*
 /**
  * Custom logs for the compiler.
  */
-class Logger constructor(val message: String, configFunction: (Logger.() -> Unit)? = null) {
+class Logger constructor(val message: String, exception: Throwable? = null,
+        configFunction: (Logger.() -> Unit)? = null) {
 
     // PROPERTIES -------------------------------------------------------------
 
@@ -24,8 +25,24 @@ class Logger constructor(val message: String, configFunction: (Logger.() -> Unit
     private val notes = mutableListOf<NoteLogger>()
 
     init {
+        if (exception != null) {
+            ExceptionTreeMapper.mapException(this, exception)
+        }
         configFunction?.invoke(this)
     }
+
+    // CONSTRUCTORS -----------------------------------------------------------
+
+    /**
+     * Creates a new [Logger] from a [Throwable].
+     */
+    constructor(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) : this(
+            exception.message ?: exception.cause?.message ?: "Undefined error", exception, buildFunction)
+
+    /**
+     * Creates a new [Logger] with a message.
+     */
+    constructor(message: String, buildFunction: (Logger.() -> Unit)? = null) : this(message, null, buildFunction)
 
     // METHODS ----------------------------------------------------------------
 
@@ -307,101 +324,75 @@ class Logger constructor(val message: String, configFunction: (Logger.() -> Unit
         // METHODS ------------------------------------------------------------
 
         /**
-         * Builds a new [Logger] logging a message.
-         */
-        private fun build(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, buildFunction) // This level will be overwritten lately.
-
-        /**
-         * Builds a new [Logger] logging an exception.
-         */
-        private fun build(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null): Logger {
-            val result =
-                    ExceptionTreeMapper.createLogger(exception.message ?: exception.cause?.message ?: "Undefined error",
-                            exception)
-            buildFunction?.invoke(result)
-            return result
-        }
-
-        /**
-         * Builds a new [Logger] logging an exception with a custom message.
-         */
-        private fun build(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null): Logger {
-            val result = ExceptionTreeMapper.createLogger(message, exception)
-            buildFunction?.invoke(result)
-            return result
-        }
-
-        /**
          * Logs a message at debug level.
          */
         fun debug(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, buildFunction).logAsDebug()
+                Logger(message, buildFunction).logAsDebug()
 
         /**
          * Logs an exception at debug level.
          */
         fun debug(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(exception, buildFunction).logAsDebug()
+                Logger(exception, buildFunction).logAsDebug()
 
         /**
          * Logs an exception at debug level with a custom message.
          */
         fun debug(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, exception, buildFunction).logAsDebug()
+                Logger(message, exception, buildFunction).logAsDebug()
 
         /**
          * Logs a message at info level.
          */
         fun info(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, buildFunction).logAsInfo()
+                Logger(message, buildFunction).logAsInfo()
 
         /**
          * Logs an exception at info level.
          */
         fun info(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(exception, buildFunction).logAsInfo()
+                Logger(exception, buildFunction).logAsInfo()
 
         /**
          * Logs an exception at info level with a custom message.
          */
         fun info(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, exception, buildFunction).logAsInfo()
+                Logger(message, exception, buildFunction).logAsInfo()
 
         /**
          * Logs a message at warn level.
          */
         fun warn(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, buildFunction).logAsWarn()
+                Logger(message, buildFunction).logAsWarn()
 
         /**
          * Logs an exception at warn level.
          */
         fun warn(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(exception, buildFunction).logAsWarn()
+                Logger(exception, buildFunction).logAsWarn()
 
         /**
          * Logs an exception at warn level with a custom message.
          */
         fun warn(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, exception, buildFunction).logAsWarn()
+                Logger(message, exception, buildFunction).logAsWarn()
 
         /**
          * Logs a message at error level.
          */
         fun error(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, buildFunction).logAsError()
+                Logger(message, buildFunction).logAsError()
 
         /**
          * Logs an exception at error level.
          */
         fun error(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(exception, buildFunction).logAsError()
+                Logger(exception, buildFunction).logAsError()
 
         /**
          * Logs an exception at error level with a custom message.
          */
         fun error(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                build(message, exception, buildFunction).logAsError()
+                Logger(message, exception, buildFunction).logAsError()
     }
 }
