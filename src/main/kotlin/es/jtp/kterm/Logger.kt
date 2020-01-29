@@ -10,7 +10,7 @@ import kotlin.math.*
 /**
  * Custom logs for the compiler.
  */
-class Logger constructor(val message: String, exception: Throwable? = null,
+class Logger constructor(val message: String, exception: Throwable? = null, val level: LogLevel = LogLevel.Debug,
         configFunction: (Logger.() -> Unit)? = null) {
 
     // PROPERTIES -------------------------------------------------------------
@@ -36,13 +36,15 @@ class Logger constructor(val message: String, exception: Throwable? = null,
     /**
      * Creates a new [Logger] from a [Throwable].
      */
-    constructor(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) : this(
-            exception.message ?: exception.cause?.message ?: "Undefined error", exception, buildFunction)
+    constructor(exception: Throwable, level: LogLevel = LogLevel.Debug,
+            buildFunction: (Logger.() -> Unit)? = null) : this(
+            exception.message ?: exception.cause?.message ?: "Undefined error", exception, level, buildFunction)
 
     /**
      * Creates a new [Logger] with a message.
      */
-    constructor(message: String, buildFunction: (Logger.() -> Unit)? = null) : this(message, null, buildFunction)
+    constructor(message: String, level: LogLevel = LogLevel.Debug, buildFunction: (Logger.() -> Unit)? = null) : this(
+            message, null, level, buildFunction)
 
     // METHODS ----------------------------------------------------------------
 
@@ -68,7 +70,7 @@ class Logger constructor(val message: String, exception: Throwable? = null,
      * Sets another [Logger] as a cause of the current one.
      */
     fun setCause(message: String, configFunction: (Logger.() -> Unit)? = null) {
-        cause = Logger(message, configFunction)
+        cause = Logger(message, level, configFunction)
     }
 
     /**
@@ -286,6 +288,11 @@ class Logger constructor(val message: String, exception: Throwable? = null,
     }
 
     /**
+     * Logs at level specified at the creation time.
+     */
+    fun log() = logAs(level)
+
+    /**
      * Logs at debug level.
      */
     fun logAsDebug() = logAs(LogLevel.Debug)
@@ -327,72 +334,72 @@ class Logger constructor(val message: String, exception: Throwable? = null,
          * Logs a message at debug level.
          */
         fun debug(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, buildFunction).logAsDebug()
+                Logger(message, LogLevel.Debug, buildFunction).logAsDebug()
 
         /**
          * Logs an exception at debug level.
          */
         fun debug(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(exception, buildFunction).logAsDebug()
+                Logger(exception, LogLevel.Debug, buildFunction).logAsDebug()
 
         /**
          * Logs an exception at debug level with a custom message.
          */
         fun debug(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, exception, buildFunction).logAsDebug()
+                Logger(message, exception, LogLevel.Debug, buildFunction).logAsDebug()
 
         /**
          * Logs a message at info level.
          */
         fun info(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, buildFunction).logAsInfo()
+                Logger(message, LogLevel.Info, buildFunction).logAsInfo()
 
         /**
          * Logs an exception at info level.
          */
         fun info(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(exception, buildFunction).logAsInfo()
+                Logger(exception, LogLevel.Info, buildFunction).logAsInfo()
 
         /**
          * Logs an exception at info level with a custom message.
          */
         fun info(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, exception, buildFunction).logAsInfo()
+                Logger(message, exception, LogLevel.Info, buildFunction).logAsInfo()
 
         /**
          * Logs a message at warn level.
          */
         fun warn(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, buildFunction).logAsWarn()
+                Logger(message, LogLevel.Warn, buildFunction).logAsWarn()
 
         /**
          * Logs an exception at warn level.
          */
         fun warn(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(exception, buildFunction).logAsWarn()
+                Logger(exception, LogLevel.Warn, buildFunction).logAsWarn()
 
         /**
          * Logs an exception at warn level with a custom message.
          */
         fun warn(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, exception, buildFunction).logAsWarn()
+                Logger(message, exception, LogLevel.Warn, buildFunction).logAsWarn()
 
         /**
          * Logs a message at error level.
          */
         fun error(message: String, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, buildFunction).logAsError()
+                Logger(message, LogLevel.Error, buildFunction).logAsError()
 
         /**
          * Logs an exception at error level.
          */
         fun error(exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(exception, buildFunction).logAsError()
+                Logger(exception, LogLevel.Error, buildFunction).logAsError()
 
         /**
          * Logs an exception at error level with a custom message.
          */
         fun error(message: String, exception: Throwable, buildFunction: (Logger.() -> Unit)? = null) =
-                Logger(message, exception, buildFunction).logAsError()
+                Logger(message, exception, LogLevel.Error, buildFunction).logAsError()
     }
 }
